@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 import imp
 
+#suit
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
      ON_OPENSHIFT = True
@@ -48,6 +55,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = (
+     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
