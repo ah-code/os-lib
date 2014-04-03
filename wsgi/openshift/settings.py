@@ -101,12 +101,17 @@ TEMPLATE_DIRS = (
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 if ON_OPENSHIFT:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': os.path.join(os.environ['OPENSHIFT_DATA_DIR'], 'db.sqlite3'),
-         }
-     }
+    url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
+ 
+    DATABASES['default'] = {
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME': os.environ['OPENSHIFT_APP_NAME'],
+        'USER': url.username,
+        'PASSWORD': url.password,
+        'HOST': url.hostname,
+        'PORT': url.port,
+        }
+
 else:
      DATABASES = {
         'default': {
