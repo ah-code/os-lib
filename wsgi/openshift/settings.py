@@ -105,6 +105,7 @@ if 'OPENSHIFT_MYSQL_DB_URL' in os.environ:
     url = urlparse.urlparse(os.environ.get('OPENSHIFT_MYSQL_DB_URL'))
  
     DATABASES = {
+		'default': {
         'ENGINE' : 'django.db.backends.mysql',
         'NAME': os.environ['OPENSHIFT_APP_NAME'],
         'USER': url.username,
@@ -112,7 +113,7 @@ if 'OPENSHIFT_MYSQL_DB_URL' in os.environ:
         'HOST': url.hostname,
         'PORT': url.port,
         }
-
+}
 else:
      DATABASES = {
         'default': {
