@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!c:/users/anita/online_lib/scripts/python.exe
 import os
 import sys
 
