@@ -142,5 +142,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
-STATIC_URL = '/static/'
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = "/static/"
+
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static')
+else:
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+
+
+# Media files (uploads)
+MEDIA_URL = "/media/"    
+if 'OPENSHIFT_DATA_DIR' in os.environ:
+    MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')
+else:
+    MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
