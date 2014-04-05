@@ -53,8 +53,7 @@ if DEBUG:
 else:
      ALLOWED_HOSTS = ['*']
 
-# Application definition
-
+# Application definitions
 INSTALLED_APPS = (
      'suit',
     'django.contrib.admin',
