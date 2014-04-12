@@ -40,7 +40,7 @@ class Book(models.Model):
     author = models.ManyToManyField(Author)
     category = models.ForeignKey(Category)
     description = models.CharField(max_length=512)
-    #image = models.ImageField(upload_to='bookcover')
+    image = models.ImageField(upload_to='bookcover')
     #file
     file = models.FileField(upload_to='bookfiles')
 
