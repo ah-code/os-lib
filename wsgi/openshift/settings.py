@@ -51,7 +51,7 @@ TEMPLATE_DEBUG = DEBUG
 if DEBUG:
      ALLOWED_HOSTS = ['*']
 else:
-     ALLOWED_HOSTS = ['*']
+     ALLOWED_HOSTS = ['*',]
 
 # Application definitions
 INSTALLED_APPS = (
