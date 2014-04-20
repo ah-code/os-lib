@@ -40,9 +40,9 @@ class Book(models.Model):
     author = models.ManyToManyField(Author)
     category = models.ForeignKey(Category)
     description = models.CharField(max_length=512)
-    image = models.ImageField(upload_to='bookcover')
+    image = models.ImageField(upload_to='cover')
     #file
-    file = models.FileField(upload_to='bookfiles')
+    file = models.FileField(upload_to='file')
 
     def	__unicode__(self):
         return self.title
