@@ -3,15 +3,19 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django.conf import settings
-
+from booklib.views import PaginationView
 
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
+	(r'^demo/categories/$', 'booklib.views.show_categories'),
+	(r'^demo/books/$', 'booklib.views.show_books'),
+	url(r'^pagination$', PaginationView.as_view(), name='pagination'),
 )
 
+##Make sure it works on openshift as well at the moment
 #if settings.DEBUG:
 urlpatterns += patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {

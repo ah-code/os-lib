@@ -16,7 +16,8 @@ import urlparse
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
+	'django.core.context_processors.request',
+	'django.contrib.auth.context_processors.auth',
 )
 
 ON_OPENSHIFT = False
@@ -55,7 +56,8 @@ else:
 
 # Application definitions
 INSTALLED_APPS = (
-     'suit',
+	'bootstrap3',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -95,7 +97,6 @@ if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDIS
 ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
-
 TEMPLATE_DIRS = (
      os.path.join(BASE_DIR,'templates'),
 )
