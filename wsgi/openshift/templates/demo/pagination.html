@@ -1,6 +1,7 @@
 {% extends 'demo/base.html' %}
-
+				{% load thumbnail %}
 {% load bootstrap3 %}
+
 
 {% block title %}
     Pagination
@@ -11,7 +12,14 @@
     <table class="table">
         {% for line in lines %}
             <tr>
-                <td>{{ line }}</td>
+				<td>
+				<img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+				</td>
+                <td><h2>{{ line }}</h2></p>
+				 {% for author in line.author.all %}
+						{{author}}<br />
+					{% endfor %}
+			
             </tr>
         {% endfor %}
     </table>

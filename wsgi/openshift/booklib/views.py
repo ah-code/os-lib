@@ -35,10 +35,9 @@ class PaginationView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)
-        lines = []
-        for i in range(10000):
-            lines.append('Line %s' % (i + 1))	
-        paginator = Paginator(lines, 10)
+		
+        book_list = Book.objects.all()
+        paginator = Paginator(book_list, 2)
         page = self.request.GET.get('page')
         try:
             show_lines = paginator.page(page)
@@ -50,3 +49,5 @@ class PaginationView(TemplateView):
             show_lines = paginator.page(paginator.num_pages)
         context['lines'] = show_lines
         return context
+		
+	

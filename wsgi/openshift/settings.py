@@ -66,6 +66,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
      'mptt',
      'booklib',
+     'easy_thumbnails',
 )
 
 MIDDLEWARE_CLASSES = (
