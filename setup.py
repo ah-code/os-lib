@@ -3,7 +3,7 @@ from setuptools import setup
 import os
 
 # Put here required packages
-packages = ['Django==1.6.2', 'django-suit', 'django-mptt', 'pillow', 'django-bootstrap3', 'easy-thumbnails']
+packages = ['Django==1.6.2', 'django-suit', 'django-mptt', 'pillow', 'django-bootstrap3', 'easy-thumbnails', 'django-social-auth']
 
 if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
      packages.append('django-redis-cache')
