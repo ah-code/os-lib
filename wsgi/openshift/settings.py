@@ -78,8 +78,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'marcador',
-    'crispy_forms',
+#    'marcador',
+#    'crispy_forms',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
