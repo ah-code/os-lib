@@ -69,18 +69,26 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'social_auth',
     'django.contrib.sites',
+	'registration',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
-#    'crispy_forms',
+    'crispy_forms',
 )
 
+
+#fixes the site_id error with not registered sites
 SITE_ID=1
+
+#django registration period
+ACCOUNT_ACTIVATION_DAYS = 7
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+
+#socialauth
 AUTHENTICATION_BACKENDS = (
 #    'social_auth.backends.twitter.TwitterBackend',
 #    'social_auth.backends.facebook.FacebookBackend',
@@ -104,6 +112,9 @@ AUTHENTICATION_BACKENDS = (
 #    'social_auth.backends.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+GOOGLE_OAUTH2_CLIENT_ID      = '324497128720-7uv1qmfevh1hfv7lab7qnaphu61unef7.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET  = '94Za9a6cbcvwtpnepOQkPjr5'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',    'django.middleware.common.CommonMiddleware',
@@ -197,6 +208,14 @@ if 'OPENSHIFT_DATA_DIR' in os.environ:
 else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
-LOGIN_URL = 'mysite_login'
-LOGOUT_URL = 'mysite_logout'
-LOGIN_REDIRECT_URL = '/'
+####dummy email-backend, used for debugging at the moment
+###if DEBUG:
+#EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'mails') # change this to a proper location	
+	
+
+#login-url
+LOGIN_URL          = '/login-form/'
+LOGIN_REDIRECT_URL = '/logged-in/'
+LOGIN_ERROR_URL    = '/login-error/'

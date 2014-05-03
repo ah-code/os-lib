@@ -8,6 +8,20 @@ from django.views.generic.base import TemplateView
 
 # Create your views here.
 
+from django.contrib.auth.views import login
+from django.contrib.auth.decorators import login_required
+
+def home(request):
+    if (request.user.is_authenticated()):
+        return render(request, 'home/home.html')
+    return login(request, template_name='home/home.html')
+
+
+@login_required
+def profile(request):
+    return render(request, template_name='home/profile.html')
+
+
 def show_categories(request):
     return render_to_response("demo/categories.html",
                           {'nodes':Category.objects.all()},
