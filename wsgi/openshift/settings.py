@@ -67,13 +67,8 @@ INSTALLED_APPS = (
     'mptt',
     'booklib',
     'easy_thumbnails',
-#    'social_auth'
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'social_auth',
     'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -82,14 +77,16 @@ INSTALLED_APPS = (
 #    'crispy_forms',
 )
 
+SITE_ID=1
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-#AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = (
 #    'social_auth.backends.twitter.TwitterBackend',
 #    'social_auth.backends.facebook.FacebookBackend',
 #    'social_auth.backends.google.GoogleOAuthBackend',
 #    'social_auth.backends.google.GoogleOAuth2Backend',
-#    'social_auth.backends.google.GoogleBackend',
+    'social_auth.backends.google.GoogleBackend',
 #    'social_auth.backends.yahoo.YahooBackend',
 #    'social_auth.backends.browserid.BrowserIDBackend',
 #    'social_auth.backends.contrib.linkedin.LinkedinBackend',
@@ -105,8 +102,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 #    'social_auth.backends.contrib.readability.ReadabilityBackend',
 #    'social_auth.backends.contrib.fedora.FedoraBackend',
 #    'social_auth.backends.OpenIDBackend',
-#    'django.contrib.auth.backends.ModelBackend',
-#)
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',    'django.middleware.common.CommonMiddleware',
