@@ -36,7 +36,6 @@ class Author(models.Model):
         return self.lastName
 
 class Book(models.Model):
-    #category = models.ForeignKey(Category)
     title = models.CharField(max_length=128)
     author = models.ManyToManyField(Author)
     category = models.ForeignKey(Category)
@@ -50,5 +49,5 @@ class Book(models.Model):
 
 class Lending(models.Model):
 	user = models.ForeignKey(User)
-    book = models.ForeignKey(Book)
-    endDate = models.DateField()
+	book = models.ForeignKey(Book)
+	endDate = models.DateField()
