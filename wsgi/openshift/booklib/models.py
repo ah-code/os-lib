@@ -1,4 +1,5 @@
 import django.core
+from django.contrib.auth.models import User
 from django.db import models
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -48,5 +49,6 @@ class Book(models.Model):
         return self.title
 
 class Lending(models.Model):
+	user = models.ForeignKey(User)
     book = models.ForeignKey(Book)
     endDate = models.DateField()
