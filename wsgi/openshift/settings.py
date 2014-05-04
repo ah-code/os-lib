@@ -75,7 +75,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
-    'crispy_forms',
+#    'crispy_forms',
 )
 
 
@@ -85,7 +85,7 @@ SITE_ID=1
 #django registration period
 ACCOUNT_ACTIVATION_DAYS = 7
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+#CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 #socialauth
