@@ -67,15 +67,13 @@ INSTALLED_APPS = (
     'mptt',
     'booklib',
     'easy_thumbnails',
-    'social_auth',
+#    'social_auth',
     'django.contrib.sites',
 	'registration',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-
-#    'crispy_forms',
 )
 
 
@@ -85,33 +83,7 @@ SITE_ID=1
 #django registration period
 ACCOUNT_ACTIVATION_DAYS = 7
 
-#CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-
-#socialauth
-AUTHENTICATION_BACKENDS = (
-#    'social_auth.backends.twitter.TwitterBackend',
-#    'social_auth.backends.facebook.FacebookBackend',
-#    'social_auth.backends.google.GoogleOAuthBackend',
-#    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.google.GoogleBackend',
-#    'social_auth.backends.yahoo.YahooBackend',
-#    'social_auth.backends.browserid.BrowserIDBackend',
-#    'social_auth.backends.contrib.linkedin.LinkedinBackend',
-#    'social_auth.backends.contrib.disqus.DisqusBackend',
-#    'social_auth.backends.contrib.livejournal.LiveJournalBackend',
-#    'social_auth.backends.contrib.orkut.OrkutBackend',
-#    'social_auth.backends.contrib.foursquare.FoursquareBackend',
-#    'social_auth.backends.contrib.github.GithubBackend',
-#    'social_auth.backends.contrib.vk.VKOAuth2Backend',
-#    'social_auth.backends.contrib.live.LiveBackend',
-#    'social_auth.backends.contrib.skyrock.SkyrockBackend',
-#    'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
-#    'social_auth.backends.contrib.readability.ReadabilityBackend',
-#    'social_auth.backends.contrib.fedora.FedoraBackend',
-#    'social_auth.backends.OpenIDBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 GOOGLE_OAUTH2_CLIENT_ID      = '324497128720-7uv1qmfevh1hfv7lab7qnaphu61unef7.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET  = '94Za9a6cbcvwtpnepOQkPjr5'
@@ -210,11 +182,21 @@ else:
 
 ####dummy email-backend, used for debugging at the moment
 ###if DEBUG:
-#EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'mails') # change this to a proper location	
-	
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'mails') # change this to a proper location	
 
+
+###gmail as a smtp server to send registratation mails	
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'python.onlinelib@gmail.com'
+EMAIL_HOST_PASSWORD = 'onlinelib...'
+	
+	
+	
+	
 #login-url
 LOGIN_URL          = '/login-form/'
 LOGIN_REDIRECT_URL = '/logged-in/'
