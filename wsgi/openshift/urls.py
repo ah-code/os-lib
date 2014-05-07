@@ -7,6 +7,7 @@ admin.autodiscover()
 
 from django.conf import settings
 from booklib.views import PaginationView
+from booklib import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,7 +18,9 @@ urlpatterns = patterns('',
 	(r'^demo/categories/$', 'booklib.views.show_categories'),
 	(r'^demo/books/$', 'booklib.views.show_books'),
 	url(r'^pagination$', PaginationView.as_view(), name='pagination'),
-)
+
+    url(r'^details$', views.details, name='views'),
+ )
 
 ##Make sure it works on openshift as well at the moment
 #if settings.DEBUG:

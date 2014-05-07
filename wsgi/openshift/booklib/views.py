@@ -44,6 +44,11 @@ def show_books(request):
 
     return render_to_response('demo/books.html', {"books": books}, context_instance=RequestContext(request))
 
+
+def details(request):
+    return render_to_response('demo/details.html')
+
+
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'
 
@@ -64,4 +69,3 @@ class PaginationView(TemplateView):
         context['lines'] = show_lines
         return context
 		
-	

@@ -1,3 +1,4 @@
+
 {% extends 'demo/bootstrap.html' %}
 
 {% load url from future %}
@@ -5,18 +6,18 @@
 {% load bootstrap3 %}
 
 {% block bootstrap3_content %}
+
     <div class="container">
-        <h1>{% block title %}(no title){% endblock %}</h1>
+        <h1>{{ book_details }}</h1>
 
         <p>
-            <a href="{% url 'home' %}">home</a>
-            <a href="{% url 'pagination' %}">pagination</a>
-            <a href="{% url 'details' %">details</a>
+            <a href="{% url 'pagination' %}">back to list</a>
         </p>
 
         {% bootstrap_messages %}
 
         {% block content %}(no content){% endblock %}
+
     </div>
 
 {% endblock %}
