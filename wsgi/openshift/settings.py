@@ -70,12 +70,21 @@ INSTALLED_APPS = (
 #    'social_auth',
     'django.contrib.sites',
 	'registration',
+	'haystack',
+	'whoosh',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
 
+#search backend
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 
 #fixes the site_id error with not registered sites
 SITE_ID=1

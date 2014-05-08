@@ -17,7 +17,26 @@ urlpatterns = patterns('',
 	(r'^demo/categories/$', 'booklib.views.show_categories'),
 	(r'^demo/books/$', 'booklib.views.show_books'),
 	url(r'^pagination$', PaginationView.as_view(), name='pagination'),
+#	(r'^search/', include('haystack.urls')),
+
 )
+
+import haystack
+from haystack.forms import SearchForm
+from haystack.query import SearchQuerySet
+from haystack.views import SearchView
+
+urlpatterns = patterns('haystack.views',
+    url(r'search/', SearchView(
+        template='search/search.html',
+        form_class=SearchForm
+    ), name='haystack_search'),
+)
+
+
+
+
+
 
 ##Make sure it works on openshift as well at the moment
 #if settings.DEBUG:

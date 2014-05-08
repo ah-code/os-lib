@@ -11,6 +11,7 @@
         <a href="{% url 'django.contrib.auth.views.logout' %}">Sign out</a>
       </li>
     </ul>
+	
   {% else %}
     <form class="navbar-form navbar-right" 
           method="post" 
@@ -28,7 +29,7 @@
       <div class="jumbotron">
 		<div class="container">
           <h1>DEMO</h1>
-          <p class="lead">django-registration demo using Bootstrap 3</p>
+          <p class="lead">Online Library</p>
 		  {% if not user.is_authenticated %}
             <p><a class="btn btn-lg btn-primary" 
 				  href="{% url 'registration_register' %}">Register</a> 
@@ -36,6 +37,10 @@
               <a class="btn btn-lg btn-success" 
 				  href="{% url 'django.contrib.auth.views.login' %}">Sign in</a>
             </p>
+		  {% else %}
+		  {% block search %}
+		  {% include "search/search.html" %}
+		  {% endblock %}
 		  {% endif %}
 		</div> <!-- /.container -->
 	  </div> <!-- /.jumbotron -->

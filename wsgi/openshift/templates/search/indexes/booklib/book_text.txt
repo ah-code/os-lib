@@ -1,0 +1,6 @@
+{{object.title}}
+{{object.description}}
+{{object.category.name}}
+{% for author in object.author.all %}
+{{author}}
+{% endfor %}
