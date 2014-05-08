@@ -7,6 +7,7 @@ admin.autodiscover()
 
 from django.conf import settings
 from booklib.views import PaginationView
+from booklib import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -21,6 +22,10 @@ urlpatterns = patterns('',
 
 )
 
+    url(r'^pagination/details$', views.details, name='details'),
+ )
+
+
 import haystack
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
@@ -32,10 +37,6 @@ urlpatterns = patterns('haystack.views',
         form_class=SearchForm
     ), name='haystack_search'),
 )
-
-
-
-
 
 
 ##Make sure it works on openshift as well at the moment

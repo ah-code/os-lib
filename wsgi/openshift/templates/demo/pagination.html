@@ -11,16 +11,28 @@
 
     <table class="table">
         {% for line in lines %}
-            <tr>
-				<td>
-				<img src="{% thumbnail line.image 100x100 crop %}" alt="" />
-				</td>
-                <td><h2>{{ line }}</h2></p>
-				 {% for author in line.author.all %}
-						{{author}}<br />
-					{% endfor %}
-			
-            </tr>
+            <form id="myform" method="post" action="/">
+                {% csrf_token %}
+                <input type="hidden" name="book_list" />
+
+                <tr>
+                    <td>
+                        <a href="{% url 'details' %}" onclick="document.forms[0].submit();">
+                            <img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'details' %}" onclick="document.forms[0].submit();">
+                            <h2>{{ line }}</h2>
+                        </a>
+                        </p>
+                            {% for author in line.author.all %}
+                                {{author}}<br />
+                            {% endfor %}
+                    </td>
+                </tr>
+            </form>
+
         {% endfor %}
     </table>
     <hr>

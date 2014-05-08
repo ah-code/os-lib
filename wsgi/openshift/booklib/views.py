@@ -47,7 +47,16 @@ def show_books(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         books = paginator.page(paginator.num_pages)
 
-    return render_to_response('demo/books.html', {"books": books}, context_instance=RequestContext(request))
+    return render('demo/books.html', {"books": books}, context_instance=RequestContext(request))
+
+
+
+def details(request):
+    #test if it works with the title
+    title = request.GET.get('title')
+    return render_to_response('demo/details.html', {"title":title}, context_instance=RequestContext(request))
+
+
 
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'
@@ -68,5 +77,18 @@ class PaginationView(TemplateView):
             show_lines = paginator.page(paginator.num_pages)
         context['lines'] = show_lines
         return context
-		
-	
+
+    #http://stackoverflow.com/questions/10773144/how-to-send-url-parameter-in-post-request-without-form
+    #in case of error, check link above
+    def post_book(request):
+        if request.method == 'POST':
+            #try:
+            book_list = Book.objects.all()
+            #post the book title so we can get it in the detail view
+            book_list.request.POST('title')
+            #except KeyError:
+                #pass
+
+        return render_to_response('demo/details.html', {}, context_instance=RequestContext(request))
+
+
