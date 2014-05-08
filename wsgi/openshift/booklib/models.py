@@ -1,6 +1,8 @@
 import django.core
+from django import forms
 from django.contrib.auth.models import User
 from django.db import models
+from django.forms import ModelForm
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 #from django.core.file.storage import FileSystemStorage
@@ -51,3 +53,8 @@ class Lending(models.Model):
 	user = models.ForeignKey(User)
 	book = models.ForeignKey(Book)
 	endDate = models.DateField()
+
+class BookForm(ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'author']

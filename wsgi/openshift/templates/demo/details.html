@@ -1,22 +1,45 @@
 
-{% extends 'demo/bootstrap.html' %}
+{% extends 'demo/base.html' %}
+        {% load thumbnail %}
 
 {% load url from future %}
 
 {% load bootstrap3 %}
 
+
+{% block title %}
+    {{ book.title }}
+{% endblock %}
+
 {% block bootstrap3_content %}
 
     <div class="container">
-        <h1>{{ book_details }}</h1>
+
+        <br/>
 
         <p>
-            <a href="{% url 'pagination' %}">back to list</a>
+            <a href="{% url 'pagination' %}">« back to list</a>
         </p>
 
         {% bootstrap_messages %}
 
-        {% block content %}(no content){% endblock %}
+        {% block content %}
+            <table class="table">
+                <tr>
+                    <td>
+                        <img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+                    </td>
+                    <td>
+                        <h1>{{ line }}</h1>
+                        <h2>{{ author }}</h2>
+                        <p>{{ book_id }}</p>
+
+                    </td>
+                </tr>
+            </table>
+
+
+        {% endblock %}
 
     </div>
 

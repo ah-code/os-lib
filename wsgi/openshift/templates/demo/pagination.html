@@ -13,9 +13,15 @@
         {% for line in lines %}
             <tr>
 				<td>
-				<img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+                    <a href="{% url 'details' %}">
+                        <img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+                    </a>
 				</td>
-                <td><h2>{{ line }}</h2></p>
+                <td>
+                    <a href="{% url 'details' %}">
+                        <h2>{{ line }}</h2>
+                    </a>
+                    </p>
 				 {% for author in line.author.all %}
 						{{author}}<br />
 					{% endfor %}

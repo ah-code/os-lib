@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 	(r'^demo/books/$', 'booklib.views.show_books'),
 	url(r'^pagination$', PaginationView.as_view(), name='pagination'),
 
-    url(r'^details$', views.details, name='views'),
+    url(r'^details$', views.details, name='details'),
  )
 
 ##Make sure it works on openshift as well at the moment

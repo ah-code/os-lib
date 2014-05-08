@@ -42,11 +42,15 @@ def show_books(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         books = paginator.page(paginator.num_pages)
 
-    return render_to_response('demo/books.html', {"books": books}, context_instance=RequestContext(request))
+    return render('demo/books.html', {"books": books}, context_instance=RequestContext(request))
+
 
 
 def details(request):
-    return render_to_response('demo/details.html')
+    book_id = request.GET.get('id')
+    return render_to_response('demo/details.html', {"book": book_id}, context_instance=RequestContext(request))
+
+
 
 
 class PaginationView(TemplateView):
@@ -68,4 +72,11 @@ class PaginationView(TemplateView):
             show_lines = paginator.page(paginator.num_pages)
         context['lines'] = show_lines
         return context
-		
+
+    def submit_id(self, **kwargs):
+        book_list = Book.objects.all()
+        #post the book ID so we can get it in the detail view
+        book_list.request.POST('id')
+
+
+
