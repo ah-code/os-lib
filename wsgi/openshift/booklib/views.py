@@ -13,8 +13,6 @@ from django.contrib.auth.views import login
 from django.contrib.auth.decorators import login_required
 
 
-
-
 def home(request):
     if (request.user.is_authenticated()):
 		
@@ -51,12 +49,15 @@ def show_books(request):
 
 
 
-def details(request):
+#def details(request):
     #test if it works with the title
-    title = request.GET.get('title')
-    return render_to_response('demo/details.html', {"title":title}, context_instance=RequestContext(request))
+    #title = request.GET.get('title')
+    #return render_to_response('demo/details.html', {"title":title}, context_instance=RequestContext(request))
 
-
+def details(request, id):
+	book = Book.objects.get(id=id)
+	return render_to_response('demo/details.html', {"book":book}, context_instance=RequestContext(request))
+	
 
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'

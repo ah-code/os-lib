@@ -5,6 +5,7 @@ from django.db import models
 from django.forms import ModelForm
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
+from django.core.urlresolvers import reverse
 #from django.core.file.storage import FileSystemStorage
 
 #fs = FileSystemStorage(location='/media/bookcover')
@@ -48,6 +49,10 @@ class Book(models.Model):
 
     def	__unicode__(self):
         return self.title
+#### NOT WORKING (why not????)	
+	def get_absolute_url(self):
+		#return reverse('book-details', self.id)
+		return('details/'+ self.id)
 
 class Lending(models.Model):
 	user = models.ForeignKey(User)

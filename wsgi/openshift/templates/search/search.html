@@ -1,5 +1,11 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load thumbnail %}
 
 {% block content %}
+
+<div class="container">
+
     <h2>Search</h2>
 
     <form method="get" class=".form-search" action=".">
@@ -15,27 +21,45 @@
 
         {% if query %}
             <h3>Results</h3>
-
-            {% for result in page.object_list %}
-                <p>
-                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
-					<br />
+			
+			<table class="table">
+        {% for result in page.object_list %}
+  
+                <tr>
+                    <td>
+                        <a href="/details/{{ line.id }}">
+                            <img src="{% thumbnail result.object.image 100x100 crop %}" alt="" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/details/{{ result.object.id }}">
+                            <h2>{{ result.object.title }}</h2>
+                        </a>
+											<br />
 					{{result.object.description}}
 					<br />
 					{{result.object.category.name}}
-					<br />
-					 {% for author in result.object.author.all %}
-						{{author}}, 
-					{% endfor %}
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-                </p>
-            {% empty %}
+
+
+                        <br>
+                            {% for author in line.author.all %}
+                                {{author}}<br />
+                            {% endfor %}
+                    </td>
+                </tr>
+				
+				{% empty %}
+				<tr>
+				<td>
                 <p>No results found.</p>
+				</td>
+				</tr>
             {% endfor %}
+
+    </table>
+
+           
+
 
             {% if page.has_previous or page.has_next %}
                 <div>
@@ -48,4 +72,6 @@
             {# Show some example queries to run, maybe query syntax, something else? #}
         {% endif %}
     </form>
+	
+	</div>
 {% endblock %}

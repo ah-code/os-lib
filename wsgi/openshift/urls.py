@@ -19,11 +19,9 @@ urlpatterns = patterns('',
 	(r'^demo/books/$', 'booklib.views.show_books'),
 	url(r'^pagination$', PaginationView.as_view(), name='pagination'),
 #	(r'^search/', include('haystack.urls')),
-
+	
 )
 
-    url(r'^pagination/details$', views.details, name='details'),
- )
 
 
 import haystack
@@ -31,7 +29,7 @@ from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 
-urlpatterns = patterns('haystack.views',
+urlpatterns += patterns('haystack.views',
     url(r'search/', SearchView(
         template='search/search.html',
         form_class=SearchForm
@@ -60,6 +58,8 @@ urlpatterns += patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+	url(r'^pagination/details$', views.details, name='details'),
+	url(r'^details/(?P<id>[0-9]+)/$', views.details, name = 'book-details'),
 )
 
 urlpatterns += patterns('django.contrib.auth.views',
