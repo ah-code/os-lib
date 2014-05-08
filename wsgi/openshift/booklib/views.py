@@ -47,8 +47,10 @@ def show_books(request):
 
 
 def details(request):
-    book_id = request.GET.get('id')
-    return render_to_response('demo/details.html', {"book": book_id}, context_instance=RequestContext(request))
+    book_list = Book.objects.all()
+    #test if it works with the title
+    book_title = request.GET.get('title')
+    return render_to_response('demo/details.html', {"book_title":book_title}, context_instance=RequestContext(request))
 
 
 
@@ -75,8 +77,9 @@ class PaginationView(TemplateView):
 
     def submit_id(self, **kwargs):
         book_list = Book.objects.all()
-        #post the book ID so we can get it in the detail view
-        book_list.request.POST('id')
+        #post the book title so we can get it in the detail view
+        book_list.request.POST('title')
+
 
 
 

@@ -54,7 +54,7 @@ class Lending(models.Model):
 	book = models.ForeignKey(Book)
 	endDate = models.DateField()
 
-class BookForm(ModelForm):
-    class Meta:
-        model = Book
-        fields = ['title', 'author']
+#class BookForm(ModelForm):
+    #class Meta:
+        #model = Book
+        #fields = ['title', 'author']
