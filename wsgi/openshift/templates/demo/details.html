@@ -8,7 +8,7 @@
 
 
 {% block title %}
-    {{ book_title }}
+    {{ title }}
 {% endblock %}
 
 {% block bootstrap3_content %}
@@ -30,10 +30,12 @@
                         <img src="{% thumbnail line.image 300x300 crop %}" alt="" />
                     </td>
                     <td>
-                        <h1>{{ book_title }}</h1>
-                        <h2>{{ book_author }}</h2>
-                        <!-- for testing purposes -->
-                        <p>{{ book_id }}</p>
+                        <h1>{{ title }}</h1>
+                        <h2>
+                            {% for author in line.author.all %}
+                                {{author}}<br />
+                            {% endfor %}
+                        </h2>
 
                     </td>
                 </tr>

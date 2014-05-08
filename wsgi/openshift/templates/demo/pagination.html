@@ -13,7 +13,7 @@
         {% for line in lines %}
             <form id="myform" method="post" action="/">
                 {% csrf_token %}
-                <input type="hidden" name="book_list" value="2" />
+                <input type="hidden" name="book_list" />
 
                 <tr>
                     <td>
