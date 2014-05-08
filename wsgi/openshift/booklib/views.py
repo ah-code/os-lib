@@ -47,10 +47,14 @@ def show_books(request):
 
 
 def details(request):
-    book_list = Book.objects.all()
     #test if it works with the title
     book_title = request.GET.get('title')
     return render_to_response('demo/details.html', {"book_title":book_title}, context_instance=RequestContext(request))
+
+
+
+
+
 
 
 
@@ -75,11 +79,17 @@ class PaginationView(TemplateView):
         context['lines'] = show_lines
         return context
 
-    def submit_id(self, **kwargs):
-        book_list = Book.objects.all()
-        #post the book title so we can get it in the detail view
-        book_list.request.POST('title')
+    #http://stackoverflow.com/questions/10773144/how-to-send-url-parameter-in-post-request-without-form
+    #in case of error, check link above
+    def post_book(request):
+        if request.method == 'POST':
+            try:
+                book_list = Book.objects.all()
+                #post the book title so we can get it in the detail view
+                book_list.request.POST['choice']
+            except KeyError:
+                pass
 
-
+        return render_to_response('demo/details.html', {}, context_instance=RequestContext(request))
 
 

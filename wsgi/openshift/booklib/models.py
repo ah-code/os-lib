@@ -53,8 +53,3 @@ class Lending(models.Model):
 	user = models.ForeignKey(User)
 	book = models.ForeignKey(Book)
 	endDate = models.DateField()
-
-#class BookForm(ModelForm):
-    #class Meta:
-        #model = Book
-        #fields = ['title', 'author']
