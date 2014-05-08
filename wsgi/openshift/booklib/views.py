@@ -53,12 +53,6 @@ def details(request):
 
 
 
-
-
-
-
-
-
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'
 
@@ -86,7 +80,7 @@ class PaginationView(TemplateView):
             try:
                 book_list = Book.objects.all()
                 #post the book title so we can get it in the detail view
-                book_list.request.POST['choice']
+                book_list.request.POST.get('title')
             except KeyError:
                 pass
 
