@@ -61,6 +61,7 @@ urlpatterns += patterns('',
 	url(r'^pagination/details$', views.details, name='details'),
 	url(r'^details/(?P<id>[0-9]+)/$', views.details, name = 'book-details'),
 	url(r'^favorites/(?P<id>[0-9]+)/$', views.favorites, name = 'book-favorites'),
+	url(r'^book_pdf/(?P<id>[0-9]+)/$', views.pdf_view, name = 'book-pdf'),
 )
 
 urlpatterns += patterns('django.contrib.auth.views',

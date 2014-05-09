@@ -6,6 +6,7 @@ from .models import Book
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -57,6 +58,14 @@ def favorites(request, id):
 	#@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
 	return render_to_response('home/favorites.html', {"book":book}, context_instance=RequestContext(request))
 	
+def pdf_view(request, id):
+	book =  get_object_or_404(Book, pk=id)
+	pdf = book.file
+
+	response = HttpResponse(pdf.read(), mimetype='application/pdf')
+	response['Content-Disposition'] = 'inline;filename=some_file.pdf'
+	return response
+	pdf.closed
 
 def details(request, id):
 	book =  get_object_or_404(Book, pk=id)

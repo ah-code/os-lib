@@ -49,6 +49,10 @@
 		
 				  <a class="btn btn-warning btn-sm"
 				href="/favorites/{{ book.id }}">Remember</a>
+				
+								  <a class="btn btn-success btn-sm"
+				href="{% url 'book-pdf' book.id %}" target="_blank">show PDF</a>
+				
 
     </div>
 
