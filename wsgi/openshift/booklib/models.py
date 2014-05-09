@@ -42,7 +42,7 @@ class Book(models.Model):
     title = models.CharField(max_length=128)
     author = models.ManyToManyField(Author)
     category = models.ForeignKey(Category)
-    description = models.CharField(max_length=512)
+    description = models.TextField()
     image = models.ImageField(upload_to='cover')
     #file
     file = models.FileField(upload_to='file')
