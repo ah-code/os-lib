@@ -5,6 +5,7 @@ from .models import Category
 from .models import Book
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -22,6 +23,7 @@ def home(request):
 
 @login_required
 def profile(request):
+	#@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
     return render(request, template_name='home/profile.html')
 
 
@@ -48,14 +50,16 @@ def show_books(request):
     return render('demo/books.html', {"books": books}, context_instance=RequestContext(request))
 
 
-
-#def details(request):
-    #test if it works with the title
-    #title = request.GET.get('title')
-    #return render_to_response('demo/details.html', {"title":title}, context_instance=RequestContext(request))
+def favorites(request, id):
+	book = get_object_or_404(Book, pk=id)
+	user = request.user
+	
+	#@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
+	return render_to_response('home/favorites.html', {"book":book}, context_instance=RequestContext(request))
+	
 
 def details(request, id):
-	book = Book.objects.get(id=id)
+	book =  get_object_or_404(Book, pk=id)
 	return render_to_response('demo/details.html', {"book":book}, context_instance=RequestContext(request))
 	
 

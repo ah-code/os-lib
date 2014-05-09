@@ -60,6 +60,7 @@ urlpatterns += patterns('',
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^pagination/details$', views.details, name='details'),
 	url(r'^details/(?P<id>[0-9]+)/$', views.details, name = 'book-details'),
+	url(r'^favorites/(?P<id>[0-9]+)/$', views.favorites, name = 'book-favorites'),
 )
 
 urlpatterns += patterns('django.contrib.auth.views',

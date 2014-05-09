@@ -29,7 +29,7 @@
             <table class="table">
                 <tr>
                     <td>
-                        <img src="{% thumbnail book.image 300x300 crop %}" alt="" />
+                        <img src="{% thumbnail book.image 300x300 crop %}" alt=""  />
                     </td>
                     <td>
                         <h1>{{ book.title }}</h1>
@@ -45,6 +45,10 @@
 
 
         {% endblock %}
+		
+		
+				  <a class="btn btn-warning btn-sm"
+				href="/favorites/{{ book.id }}">Remember</a>
 
     </div>
 

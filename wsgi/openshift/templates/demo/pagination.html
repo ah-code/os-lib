@@ -8,14 +8,15 @@
 {% endblock %}
 
 {% block content %}
-
+  
     <table class="table">
         {% for line in lines %}
+ 
   
                 <tr>
                     <td>
                         <a href="details/{{ line.id }}">
-                            <img src="{% thumbnail line.image 100x100 crop %}" alt="" />
+                            <img src="{% thumbnail line.image 100x100 crop %}" alt="" class="img-thumbnail" />
                         </a>
                     </td>
                     <td>
