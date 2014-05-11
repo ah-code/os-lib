@@ -92,17 +92,5 @@ class PaginationView(TemplateView):
         context['lines'] = show_lines
         return context
 
-    #http://stackoverflow.com/questions/10773144/how-to-send-url-parameter-in-post-request-without-form
-    #in case of error, check link above
-    def post_book(request):
-        if request.method == 'POST':
-            #try:
-            book_list = Book.objects.all()
-            #post the book title so we can get it in the detail view
-            book_list.request.POST('title')
-            #except KeyError:
-                #pass
-
-        return render_to_response('demo/details.html', {}, context_instance=RequestContext(request))
 
 
