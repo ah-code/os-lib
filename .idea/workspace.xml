@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d0b4c01-4191-49f3-bb44-36e371f39ab5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" afterPath="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -39,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="1.0256411" vertical-offset="668" max-vertical-offset="1734">
+            <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1734">
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -59,10 +60,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="search.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="28" selection-start="995" selection-end="995" vertical-scroll-proportion="-8.196078" vertical-offset="194" max-vertical-offset="1394">
+            <state line="29" column="58" selection-start="659" selection-end="659" vertical-scroll-proportion="0.44165435" vertical-offset="194" max-vertical-offset="1394">
               <folding />
             </state>
           </provider>
@@ -125,6 +126,7 @@
         <option value="$PROJECT_DIR$/wsgi/openshift/urls.py" />
         <option value="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" />
         <option value="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" />
+        <option value="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" />
       </list>
     </option>
   </component>
@@ -815,13 +817,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="74" selection-end="74" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="59" selection-start="326" selection-end="326" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="442">
@@ -836,19 +831,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="28" selection-start="995" selection-end="995" vertical-scroll-proportion="-8.196078" vertical-offset="194" max-vertical-offset="1394">
+        <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1734">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="26" selection-start="74" selection-end="74" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1071">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/views.py">
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="1.0256411" vertical-offset="668" max-vertical-offset="1734">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state line="29" column="58" selection-start="659" selection-end="659" vertical-scroll-proportion="0.44165435" vertical-offset="194" max-vertical-offset="1394">
+          <folding />
         </state>
       </provider>
     </entry>
