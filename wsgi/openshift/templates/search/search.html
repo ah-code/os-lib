@@ -32,24 +32,27 @@
                         </a>
                     </td>
                     <td>
+
                         <a href="/details/{{ result.object.id }}">
-                            <h2>{{ result.object.title }}</h2>
+                            <h4>{{ result.object.title }}</h4>
                         </a>
-											<br />
-					{{result.object.description}}
-					<br />
-					{{result.object.category.name}}
 
+                        {% for author in result.object.author.all %}
+                            {{author}};
+                        {% endfor %}
 
-                        <br>
-                            {% for author in line.author.all %}
-                                {{author}}<br />
-                            {% endfor %}
+                        <!-- <br/> <br/>
+                        {{result.object.description}} -->
+
+                        <br /> <br/>
+                            Category: {{result.object.category.name}}
+
                     </td>
                 </tr>
 				
 				{% empty %}
 				<tr>
+
 				<td>
                 <p>No results found.</p>
 				</td>
