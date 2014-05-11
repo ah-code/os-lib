@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0b4c01-4191-49f3-bb44-36e371f39ab5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/base.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/home/favorites.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/home/favorites.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" afterPath="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -43,7 +45,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0" vertical-offset="668" max-vertical-offset="1734">
+            <state line="84" column="45" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="1734">
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -54,16 +56,34 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="1615">
+            <state line="73" column="44" selection-start="2352" selection-end="2352" vertical-scroll-proportion="-15.04" vertical-offset="831" max-vertical-offset="1615">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="search.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="58" selection-start="659" selection-end="659" vertical-scroll-proportion="0.44165435" vertical-offset="194" max-vertical-offset="1394">
+            <state line="26" column="2" selection-start="554" selection-end="554" vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="1394">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="favorites.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/home/favorites.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="0" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.5314685" vertical-offset="249" max-vertical-offset="1207">
               <folding />
             </state>
           </provider>
@@ -127,6 +147,8 @@
         <option value="$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html" />
         <option value="$PROJECT_DIR$/wsgi/openshift/booklib/views.py" />
         <option value="$PROJECT_DIR$/wsgi/openshift/templates/search/search.html" />
+        <option value="$PROJECT_DIR$/wsgi/openshift/templates/home/favorites.html" />
+        <option value="$PROJECT_DIR$/wsgi/openshift/templates/base.html" />
       </list>
     </option>
   </component>
@@ -209,6 +231,80 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinelib_openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os-lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wsgi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinelib_openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os-lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wsgi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="onlinelib_openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os-lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wsgi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openshift" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -515,22 +611,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="21" selection-start="2933" selection-end="2933" vertical-scroll-proportion="0.0" vertical-offset="874" max-vertical-offset="1615">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wsgi/openshift/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="22" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
@@ -803,6 +883,13 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="715" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/pagination.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="-1.3461539" vertical-offset="50" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="0" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1122">
@@ -810,9 +897,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/pagination.html">
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="-1.3461539" vertical-offset="50" max-vertical-offset="765">
+        <state line="73" column="44" selection-start="2352" selection-end="2352" vertical-scroll-proportion="-15.04" vertical-offset="831" max-vertical-offset="1615">
           <folding />
         </state>
       </provider>
@@ -824,9 +911,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/urls.py">
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="1615">
+        <state line="3" column="26" selection-start="74" selection-end="74" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/home/favorites.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="2" selection-start="554" selection-end="554" vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
@@ -840,16 +941,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/details.html">
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="74" selection-end="74" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/search/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="58" selection-start="659" selection-end="659" vertical-scroll-proportion="0.44165435" vertical-offset="194" max-vertical-offset="1394">
+        <state line="37" column="0" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.5314685" vertical-offset="249" max-vertical-offset="1207">
           <folding />
         </state>
       </provider>
