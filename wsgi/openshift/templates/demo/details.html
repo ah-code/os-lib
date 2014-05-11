@@ -1,59 +1,57 @@
 
-{% extends 'demo/base.html' %}
-        {% load thumbnail %}
-
+{% extends 'base.html' %}
+{% load thumbnail %}
 {% load url from future %}
-
 {% load bootstrap3 %}
-
-
+{% block bootstrap3_content %}
 {% block title %}
     {{ book.title }}
-	
-	<br />
 {% endblock %}
 
-{% block bootstrap3_content %}
-
-    <div class="container">
-
-        <br/>
-
-        <p>
-            <a href="{% url 'pagination' %}">« back to list</a>
-        </p>
-
-        {% bootstrap_messages %}
-
-        {% block content %}
-            <table class="table">
-                <tr>
-                    <td>
-                        <img src="{% thumbnail book.image 300x300 crop %}" alt=""  />
-                    </td>
-                    <td>
-                        <h1>{{ book.title }}</h1>
-                        <h2>
-                            {% for author in book.author.all %}
-                                {{author}}<br />
-                            {% endfor %}
-                        </h2>
-
-                    </td>
-                </tr>
-            </table>
 
 
-        {% endblock %}
-		
-		
-				  <a class="btn btn-warning btn-sm"
-				href="/favorites/{{ book.id }}">Remember</a>
-				
-								  <a class="btn btn-success btn-sm"
-				href="{% url 'book-pdf' book.id %}" target="_blank">show PDF</a>
-				
+{% block content %}
+<div class="container">
 
-    </div>
+   <p>
+        <a href="{% url 'haystack_search' %}">« back to search</a>
+   </p>
+   <table class="table">
+        <tr>
+             <td>
+                  <img src="{% thumbnail book.image 300x300 crop %}" alt=""  />
+             </td>
+             <td>
+                  <h1>{{ book.title }}</h1>
+                  <h2>
+                       {% for author in book.author.all %}
+                            {{author}}<br />
+                       {% endfor %}
+                  </h2>
+                  <p>
+                       {{ book.description }}
+                  </p>
+                  <br/>
+                  <p align="right">
+                       Category: {{ book.category }}
+                  </p>
+
+             </td>
+        </tr>
+        <tr>
+            <td>
+                  <a class="btn btn-warning btn-sm"
+                href="/favorites/{{ book.id }}">Remember</a>
+
+                                  <a class="btn btn-success btn-sm"
+                href="{% url 'book-pdf' book.id %}" target="_blank">show PDF</a>
+            </td>
+        </tr>
+    </table>
+
+</div>
+{% endblock %}
+
+
 
 {% endblock %}
