@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+import datetime
 
 
 # Create your views here.
@@ -62,9 +63,8 @@ def favorites(request, id):
 
     fav.book = book
     fav.user = user
-
+    fav.endDate = datetime.date.today()
     fav.save()
-
     message = "sucess"
 
 
