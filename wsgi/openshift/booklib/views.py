@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import Category
-from .models import Book
+from .models import Book, Favorite
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
@@ -24,8 +24,12 @@ def home(request):
 
 @login_required
 def profile(request):
-	#@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
-    return render(request, template_name='home/profile.html')
+
+    #@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
+    favs = Favorite.objects.filter(user_id=request.user.id)
+
+
+    return render(request,{'favorites':favs}, template_name='home/profile.html')
 
 
 def show_categories(request):
@@ -50,13 +54,19 @@ def show_books(request):
 
     return render('demo/books.html', {"books": books}, context_instance=RequestContext(request))
 
-
+@login_required
 def favorites(request, id):
-	book = get_object_or_404(Book, pk=id)
-	user = request.user
-	
-	#@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
-	return render_to_response('home/favorites.html', {"book":book}, context_instance=RequestContext(request))
+    book = get_object_or_404(Book, pk=id)
+    user = request.user
+    fav = Favorite()
+
+    fav.book = book
+    fav.user = user
+
+    fav.save()
+
+    #@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
+    # return render_to_response('home/favorites.html', {"book":book}, context_instance=RequestContext(request))
 	
 def pdf_view(request, id):
 	book =  get_object_or_404(Book, pk=id)
