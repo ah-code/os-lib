@@ -6,9 +6,13 @@ from django.forms import ModelForm
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 from django.core.urlresolvers import reverse
+from mptt.managers import TreeManager
 #from django.core.file.storage import FileSystemStorage
 
 #fs = FileSystemStorage(location='/media/bookcover')
+
+class CategoryManager(TreeManager):
+    pass
 
 class Category(MPTTModel):
     name = models.CharField(max_length=64)
@@ -41,7 +45,7 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=128)
     author = models.ManyToManyField(Author)
-    category = models.ForeignKey(Category)
+    category = TreeForeignKey(Category)
     description = models.TextField()
     image = models.ImageField(upload_to='cover')
     #file

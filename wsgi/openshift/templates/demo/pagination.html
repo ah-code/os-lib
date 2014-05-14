@@ -9,30 +9,38 @@
 
 {% block content %}
   
-    <table class="table">
-        {% for line in lines %}
- 
   
-                <tr>
-                    <td>
-                        <a href="details/{{ line.id }}">
-                            <img src="{% thumbnail line.image 100x100 crop %}" alt="" class="img-thumbnail" />
-                        </a>
-                    </td>
-                    <td>
-                        <a href="details/{{ line.id }}">
-                            <h2>{{ line }}</h2>
-                        </a>
-						
-                        </p>
+  {% load mptt_tags %}
+
+<ul class="nav nav-pills nav-stacked">
+    {% recursetree nodes %}
+        <li class="">
+            <a href="?category_filter= {{ node.pk }}">{{ node.name }}
+			</a>
+        </li>
+    {% endrecursetree %}
+</ul>
+
+
+        {% for line in lines %}
+		
+		<div class="media">
+  <a class="pull-left" href="details/{{ line.id }}">
+    <img class="media-object" src="{% thumbnail line.image 100x100 crop %}" alt="">
+  </a>
+  <div class="media-body">
+    <a href="details/{{ line.id }}" class="media-heading">{{line}}</a>
+    </p>
                             {% for author in line.author.all %}
                                 {{author}}<br />
                             {% endfor %}
-                    </td>
-                </tr>
+							
+							{{line.description|truncatechars:200}}
+  </div>
+</div>
+             
 
         {% endfor %}
-    </table>
     <hr>
 
     {% bootstrap_pagination lines url="/pagination?page=1&flop=flip" extra="q=foo" size="small" %}
