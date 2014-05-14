@@ -18,8 +18,7 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     if (request.user.is_authenticated()):
-		
-        return render(request, 'home/home.html')
+	return render(request, 'home/home.html')
     return login(request, template_name='home/home.html')
 
 
@@ -30,7 +29,8 @@ def profile(request):
     favs = Favorite.objects.filter(user_id=request.user.id)
 
 
-    return render(request,{'favorites':favs}, template_name='home/profile.html')
+    #return render(request,{'favorites':favs}, template_name='home/profile.html')
+    return render_to_response('home/profile.html', {"favorites": favs}, context_instance=RequestContext(request))
 
 
 def show_categories(request):

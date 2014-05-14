@@ -11,7 +11,23 @@
   
   
   {% load mptt_tags %}
+  
+  
+{% drilldown_tree_for_node nodes as drilldown cumulative count booklib.Book.category in game_count %}
+{% for node,structure in drilldown|tree_info %}
+    {% if structure.new_level %}<ul><li>{% else %}</li><li>{% endif %}
+    {% ifequal node nodes %}
+        <strong>{{ node.name }}</strong>
+    {% else %}
+        <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+        {% ifequal node.parent_id nodes.pk %}({{ node.game_count }}){% endifequal %}
+    {% endifequal %}
+    {% for level in structure.closed_levels %}</li></ul>{% endfor %}
+{% endfor %}
 
+
+  {% full_tree_for_model booklib.Category as categories %}
+<div class="pull-left">
 <ul class="nav nav-pills nav-stacked">
     {% recursetree nodes %}
         <li class="">
@@ -20,8 +36,9 @@
         </li>
     {% endrecursetree %}
 </ul>
+</div>
 
-
+<div class="pull-right">
         {% for line in lines %}
 		
 		<div class="media">
@@ -44,5 +61,5 @@
     <hr>
 
     {% bootstrap_pagination lines url="/pagination?page=1&flop=flip" extra="q=foo" size="small" %}
-
+</div>
 {% endblock %}

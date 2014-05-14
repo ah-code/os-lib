@@ -10,9 +10,9 @@
 
 
 <br />
-    {% for fav in favs %}
-      <a href="/details/"{{fav.book.id}}><{% fav.book %}/a>   <br />
-    {% endfor % %}
+    {% for fav in favorites %}
+      <a href="/details/{{ fav.book.id }}">{{fav.book}}</a>
+    {% endfor %}
 
 
 
