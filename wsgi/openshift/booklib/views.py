@@ -65,8 +65,12 @@ def favorites(request, id):
 
     fav.save()
 
+    message = "sucess"
+
+
+
     #@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
-    # return render_to_response('home/favorites.html', {"book":book}, context_instance=RequestContext(request))
+    return render_to_response('home/favorites.html', {"book":book, 'message':message}, context_instance=RequestContext(request))
 	
 def pdf_view(request, id):
 	book =  get_object_or_404(Book, pk=id)
