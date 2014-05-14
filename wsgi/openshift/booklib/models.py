@@ -62,3 +62,8 @@ class Lending(models.Model):
 	user = models.ForeignKey(User)
 	book = models.ForeignKey(Book)
 	endDate = models.DateField()
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User)
+    book = models.ForeignKey(Book)
+    endDate = models.DateField()
