@@ -19,7 +19,10 @@
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="favorites">
-This are your favorites!<p/>
+
+  <br />
+<h4> This are your favorites!</h4>  <p/>
+  <br />
 
 <table class="table table-striped">
     {% for fav in favorites %}
@@ -41,10 +44,16 @@ This are your favorites!<p/>
 
 </table>
 
+ {% bootstrap_pagination favorites url="/profile?page=1&flop=flip" extra="q=foo" size="small" %}
+
 
 
   </div>
   <div class="tab-pane" id="settings">
+
+<br />
+<h4> Change your settings!</h4>  <p/>
+<br />
 
 
   <p><a href="{% url 'django.contrib.auth.views.password_change' %}">Change password</a></p>

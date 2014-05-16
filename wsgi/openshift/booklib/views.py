@@ -27,7 +27,19 @@ def profile(request):
 
     #@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
     favs = Favorite.objects.filter(user_id=request.user.id)
+    paginator = Paginator(favs, 2)
 
+
+    page = request.GET.get('page')
+
+    try:
+		favs = paginator.page(page)
+    except PageNotAnInteger:
+     # If page is not an integer, deliver first page.
+        favs = paginator.page(1)
+    except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+        favs = paginator.page(paginator.num_pages)
 
     #return render(request,{'favorites':favs}, template_name='home/profile.html')
     return render_to_response('home/profile.html', {"favorites": favs}, context_instance=RequestContext(request))
