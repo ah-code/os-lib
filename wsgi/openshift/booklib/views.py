@@ -89,26 +89,29 @@ def favorites(request, id):
     return render_to_response('home/favorites.html', {"book":book, 'message':message}, context_instance=RequestContext(request))
 	
 def pdf_view(request, id):
-	book =  get_object_or_404(Book, pk=id)
-	pdf = book.file
-	
-	today = datetime.date.today()
-	lend = Lending (user = request.user, book = book, endDate = today)
-	lend.save()
-	response = HttpResponse(pdf.read(), mimetype='application/pdf')
-	response['Content-Disposition'] = 'inline;filename=some_file.pdf'
-	return response
-	pdf.closed
+	if (request.user.is_authenticated()):
+		book =  get_object_or_404(Book, pk=id)
+		pdf = book.file
+		
+		today = datetime.date.today()
+		lend = Lending (user = request.user, book = book, endDate = today)
+		lend.save()
+		response = HttpResponse(pdf.read(), mimetype='application/pdf')
+		response['Content-Disposition'] = 'inline;filename=some_file.pdf'
+		return response
+		pdf.closed
+	return login(request, template_name='home/home.html')
 
 def details(request, id):
-	book =  get_object_or_404(Book, pk=id)
-	today = datetime.date.today()
-	lending = Lending.objects.filter(user = request.user, endDate__month = today.month)
-	c = lending.count()
-	c = 10-c
+	if (request.user.is_authenticated()):
+		book =  get_object_or_404(Book, pk=id)
+		today = datetime.date.today()
+		lending = Lending.objects.filter(user = request.user, endDate__month = today.month)
+		c = lending.count()
+		c = 10-c
 	
-	return render_to_response('demo/details.html', {"book":book, "lendings": c}, context_instance=RequestContext(request))
-	
+		return render_to_response('demo/details.html', {"book":book, "lendings": c}, context_instance=RequestContext(request))
+	return login(request, template_name='home/home.html')
 
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'
