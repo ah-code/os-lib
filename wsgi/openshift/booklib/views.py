@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import Category
-from .models import Book, Favorite
+from .models import Book, Favorite, Lending
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
@@ -91,7 +91,10 @@ def favorites(request, id):
 def pdf_view(request, id):
 	book =  get_object_or_404(Book, pk=id)
 	pdf = book.file
-
+	
+	today = datetime.date.today()
+	lend = Lending (user = request.user, book = book, endDate = today)
+	lend.save()
 	response = HttpResponse(pdf.read(), mimetype='application/pdf')
 	response['Content-Disposition'] = 'inline;filename=some_file.pdf'
 	return response
@@ -99,7 +102,12 @@ def pdf_view(request, id):
 
 def details(request, id):
 	book =  get_object_or_404(Book, pk=id)
-	return render_to_response('demo/details.html', {"book":book}, context_instance=RequestContext(request))
+	today = datetime.date.today()
+	lending = Lending.objects.filter(user = request.user, endDate__month = today.month)
+	c = lending.count()
+	c = 10-c
+	
+	return render_to_response('demo/details.html', {"book":book, "lendings": c}, context_instance=RequestContext(request))
 	
 
 class PaginationView(TemplateView):

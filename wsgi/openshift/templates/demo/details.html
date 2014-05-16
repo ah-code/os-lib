@@ -43,8 +43,13 @@
                   <a class="btn btn-warning btn-sm"
                 href="/favorites/{{ book.id }}">Remember</a>
 
-                                  <a class="btn btn-success btn-sm"
+                
+				
+				{% if lendings > 0 %}
+				<a class="btn btn-success btn-sm"
                 href="{% url 'book-pdf' book.id %}" target="_blank">show PDF</a>
+				{% endif %}
+				<span class="badge">{{lendings}} books left this month! </span>
             </td>
         </tr>
     </table>
