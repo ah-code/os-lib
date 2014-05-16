@@ -11,12 +11,16 @@
 
 <br />
 
-<!--      >
-add Glyphicons:
-<span class="glyphicon glyphicon-bookmark"></span>
-<!-->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#favorites" data-toggle="tab">  <span class="glyphicon glyphicon-bookmark"></span> Favorites</a></li>
+  <li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+</ul>
 
-        <span class="glyphicon glyphicon-bookmark"></span>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="favorites">
+This are your favorites!<p/>
+
 <table class="table table-striped">
     {% for fav in favorites %}
         <tr>
@@ -39,8 +43,37 @@ add Glyphicons:
 
 
 
+  </div>
+  <div class="tab-pane" id="settings">
 
 
   <p><a href="{% url 'django.contrib.auth.views.password_change' %}">Change password</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--      >
+add Glyphicons:
+<span class="glyphicon glyphicon-bookmark"></span>
+<!-->
+
+
+
+
+
+
+
 </div>
 {% endblock %}
