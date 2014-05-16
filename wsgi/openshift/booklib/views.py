@@ -59,14 +59,18 @@ def show_books(request):
 def favorites(request, id):
     book = get_object_or_404(Book, pk=id)
     user = request.user
-    fav = Favorite()
 
-    fav.book = book
-    fav.user = user
-    fav.endDate = datetime.date.today()
-    fav.save()
-    message = "sucess"
-
+    try:
+        fav = Favorite.objects.get(book = book, user = user)
+        fav.delete()
+        message = "deleted"
+    except Favorite.DoesNotExist:
+        fav = Favorite()
+        fav.book = book
+        fav.user = user
+        fav.endDate = datetime.date.today()
+        fav.save()
+        message = "created"
 
 
     #@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern

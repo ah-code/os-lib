@@ -10,6 +10,13 @@
 
 
 <br />
+    {% if message == "created" %}
+
+    <div class="alert alert-success">You successfully created a favorite!</div>
+
+        {% elif message == "deleted" %}
+            <div class="alert alert-danger">You successfully deleted a favorite!</div>
+    {% endif %}
 {{ message }}
 </div>
 {% endblock %}

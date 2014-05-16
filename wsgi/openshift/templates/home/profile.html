@@ -10,9 +10,33 @@
 
 
 <br />
+
+<!--      >
+add Glyphicons:
+<span class="glyphicon glyphicon-bookmark"></span>
+<!-->
+
+        <span class="glyphicon glyphicon-bookmark"></span>
+<table class="table table-striped">
     {% for fav in favorites %}
+        <tr>
+        <td>
       <a href="/details/{{ fav.book.id }}">{{fav.book}}</a>
+        </td>
+            <td>
+                  {% for author in fav.book.author.all %}
+                            {{author}} <br/>
+                       {% endfor %}
+            </td>
+        <td>
+            {{ fav.endDate }}
+        </td>
+        </tr>
     {% endfor %}
+
+
+</table>
+
 
 
 
