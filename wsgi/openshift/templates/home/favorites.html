@@ -4,9 +4,14 @@
 {% block title %}Profile{% endblock %}
 {% block content %}
 <div class="container">
-  <h1>Favorite</h1>
-  <h2>{{ user.get_username }}</h2>
-  <a href="/details/{{ book.id }}">{{ book.title }}</a>
+  <!-- <h1>Favorite</h1> -->
+  <h2>
+      <a href="/profile/">
+      {{ user.get_username }}'s favorites</a></h2>
+    <br/>
+    <h3>
+        <a href="/details/{{ book.id }}">{{ book.title }}</a></h3>
+   <br/>
 
 
 <br />
@@ -17,6 +22,6 @@
         {% elif message == "deleted" %}
             <div class="alert alert-danger">You successfully deleted a favorite!</div>
     {% endif %}
-{{ message }}
+<!-- {{ message }} -->
 </div>
 {% endblock %}
