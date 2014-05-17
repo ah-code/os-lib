@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
-{% block title %}DEMO{% endblock %}
+{% block title %}Library{% endblock %}
 {% block nav_user %}
   {% if user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
@@ -28,8 +28,7 @@
 	<div class="container">
       <div class="jumbotron">
 		<div class="container">
-          <h1>DEMO</h1>
-          <p class="lead">Online Library</p>
+          <h1>Online Library</h1>
 		  {% if not user.is_authenticated %}
             <p><a class="btn btn-lg btn-primary" 
 				  href="{% url 'registration_register' %}">Register</a> 
@@ -42,8 +41,51 @@
 		  <a class="btn btn-lg btn-success"
 				href="search/">To preliminary search</a>
 		  {% endblock %}
-		  {% endif %}
+		 	  {% endif %}
+
+
+<br />
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="..." alt="...">
+      <div class="carousel-caption">
+
+      </div>
+    </div>
+    ...
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+
+<br />
+<p class="text-left">10<strong> free </strong>download per month</p>
+<p class="text-center">Fabulous variety of books</p>
+<p class="text-right">Search function</p>
+<p class="text-center">Favorite function</p>
+<p class="text-justify">Check out our Online Library</p>
+<p class="text-right">Sign up!</p>
+
+<br />
+
 		</div> <!-- /.container -->
 	  </div> <!-- /.jumbotron -->
     </div> <!-- /.container -->
+
 {% endblock content %}
