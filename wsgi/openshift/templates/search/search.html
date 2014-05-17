@@ -41,8 +41,8 @@
                             {{author}};
                         {% endfor %}
 
-                        <!-- <br/> <br/>
-                        {{result.object.description}} -->
+                        <br/> <br/>
+                           {{result.object.description|truncatechars:300}}
 
                         <br /> <br/>
                             Category: {{result.object.category.name}}
