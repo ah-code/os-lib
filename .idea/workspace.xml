@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d0b4c01-4191-49f3-bb44-36e371f39ab5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wsgi/openshift/templates/home/home.html" afterPath="$PROJECT_DIR$/wsgi/openshift/templates/home/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="onlinelib_openshift.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,19 +83,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pagination.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pagination.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/pagination.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="13.538462" vertical-offset="420" max-vertical-offset="1003">
+            <state line="4" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="-0.62633455" vertical-offset="420" max-vertical-offset="1003">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/home/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="12" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.7914339" vertical-offset="901" max-vertical-offset="1938">
+            <state line="30" column="41" selection-start="1127" selection-end="1127" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1938">
               <folding />
             </state>
           </provider>
@@ -883,13 +884,6 @@
         <state line="11" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.26153848" vertical-offset="0" max-vertical-offset="715" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/pagination.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="13.538462" vertical-offset="420" max-vertical-offset="1003">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wsgi/openshift/booklib/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="0" selection-start="1987" selection-end="1987" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1275">
@@ -929,7 +923,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/home/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="12" selection-start="2790" selection-end="2790" vertical-scroll-proportion="0.7914339" vertical-offset="901" max-vertical-offset="1938">
+        <state line="30" column="41" selection-start="1127" selection-end="1127" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1938">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi/openshift/templates/demo/pagination.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="80" selection-end="127" vertical-scroll-proportion="-0.62633455" vertical-offset="420" max-vertical-offset="1003">
           <folding />
         </state>
       </provider>
