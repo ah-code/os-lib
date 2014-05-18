@@ -1,6 +1,0 @@
-#rewrite the path at the server
-RewriteEngine On
-RewriteRule ^application/static/(.+)$ /static/$1 [L]
-
-RewriteEngine On
-RewriteRule ^application/media/(.+)$ /static/media/$1 [L]
