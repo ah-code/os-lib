@@ -45,27 +45,7 @@ def profile(request):
     return render_to_response('home/profile.html', {"favorites": favs}, context_instance=RequestContext(request))
 
 
-def show_categories(request):
-    return render_to_response("demo/categories.html",
-                          {'nodes':Category.objects.all()},
-                          context_instance=RequestContext(request))
 						  
-
-def show_books(request):
-    book_list = Book.objects.all()
-    paginator = Paginator(book_list, 5) # Show 5 books per page
-
-    page = request.GET.get('page')
-    try:
-        books = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        books = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        books = paginator.page(paginator.num_pages)
-
-    return render('demo/books.html', {"books": books}, context_instance=RequestContext(request))
 
 @login_required
 def favorites(request, id):
@@ -87,7 +67,7 @@ def favorites(request, id):
 
     #@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
     return render_to_response('home/favorites.html', {"book":book, 'message':message}, context_instance=RequestContext(request))
-	
+@login_required	
 def pdf_view(request, id):
 	if (request.user.is_authenticated()):
 		book =  get_object_or_404(Book, pk=id)
@@ -100,8 +80,9 @@ def pdf_view(request, id):
 		response['Content-Disposition'] = 'inline;filename=some_file.pdf'
 		return response
 		pdf.closed
-	return login(request, template_name='home/home.html')
-
+	return login(request, template_name='registration/login.html')
+	
+@login_required
 def details(request, id):
 	if (request.user.is_authenticated()):
 		book =  get_object_or_404(Book, pk=id)
@@ -113,7 +94,7 @@ def details(request, id):
 		f = fav.count()
 	
 		return render_to_response('demo/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
-	return login(request, template_name='home/home.html')
+	return login(request, template_name='registration/login.html')
 
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'

@@ -15,8 +15,7 @@ urlpatterns = patterns('',
 	url(r'^profile/$', 'booklib.views.profile', name='profile'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
-	(r'^demo/categories/$', 'booklib.views.show_categories'),
-	(r'^demo/books/$', 'booklib.views.show_books'),
+
 	url(r'^browse$', PaginationView.as_view(), name='pagination'),
 #	(r'^search/', include('haystack.urls')),
 	
@@ -65,9 +64,9 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('django.contrib.auth.views',
-#    url(r'^login/$', 'login', {'template_name': 'login.html'},
- #       name='mysite_login'),
-#    url(r'^logout/$', 'logout', {'next_page': '/'}, name='mysite_logout'),
+    url(r'^login/$', 'login', {'template_name': 'login.html'},
+        name='mysite_login'),
+    url(r'^logout/$', 'logout', {'next_page': '/'}, name='mysite_logout'),
 	url(r'^accounts/', include('registration.backends.default.urls')),
 	url(r'^password/change/$',
                     auth_views.password_change,

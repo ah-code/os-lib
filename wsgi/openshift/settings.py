@@ -210,6 +210,6 @@ EMAIL_HOST_PASSWORD = 'onlinelib...'
 	
 	
 #login-url
-LOGIN_URL          = '/login-form/'
+LOGIN_URL          = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/logged-in/'
 LOGIN_ERROR_URL    = '/login-error/'
