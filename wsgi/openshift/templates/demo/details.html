@@ -40,7 +40,7 @@
         </tr>
         <tr>
             <td>
-                {% if book.id in Favorite.objects %}
+                {% if favorite < 1 %}
                      <a class="btn btn-default btn-sm" data-toggle="tooltip" title="Mark as favorite"
                     href="/favorites/{{ book.id }}"> <span class="glyphicon glyphicon-star-empty"></span></a>
 

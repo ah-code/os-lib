@@ -27,7 +27,7 @@ def profile(request):
 
     #@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
     favs = Favorite.objects.filter(user_id=request.user.id)
-    paginator = Paginator(favs, 2)
+    paginator = Paginator(favs, 5)
 
 
     page = request.GET.get('page')
@@ -109,8 +109,10 @@ def details(request, id):
 		lending = Lending.objects.filter(user = request.user, endDate__month = today.month)
 		c = lending.count()
 		c = 10-c
+		fav = Favorite.objects.filter(user = request.user, book = book)
+		f = fav.count()
 	
-		return render_to_response('demo/details.html', {"book":book, "lendings": c}, context_instance=RequestContext(request))
+		return render_to_response('demo/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
 	return login(request, template_name='home/home.html')
 
 class PaginationView(TemplateView):
