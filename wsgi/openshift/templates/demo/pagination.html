@@ -1,54 +1,76 @@
-{% extends 'demo/base.html' %}
+{% extends 'base.html' %}
 				{% load thumbnail %}
 {% load bootstrap3 %}
 
 
 {% block title %}
-    Pagination
+    Browse
 {% endblock %}
 
 {% block content %}
   
-  
-  {% load mptt_tags %}
-  
 
+<div class="container data-spy="scroll" data-target=".affix-nav">
+<div class="row">
+<div id="affix-nav" class="sidebar col-md-2">
 
+{% regroup lines by category as category_list %}
 
-  {% full_tree_for_model booklib.Category as categories %}
-<div class="pull-left">
-<ul class="nav nav-pills nav-stacked">
-    {% recursetree nodes %}
-        <li class="">
-            <a href="?category_filter= {{ node.pk }}">{{ node.name }}
-			</a>
+    <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="15" data-offset-botton="30">
+	{% for cat in category_list %}
+	
+        <li><a href="#{{cat.grouper}}">{{cat.grouper}} <span class="badge">{{cat.list|length}}</span></a>
+<!--        <ul class="nav">
+		 {% for item in cat.list %}
+        <li><a href="#{{item}}">{{item}}</a></li>
+		{% endfor %}
+        </ul>
+				!-->
         </li>
-    {% endrecursetree %}
-</ul>
+	{% endfor %}
+    </ul>
 </div>
 
-<div class="pull-right">
-        {% for line in lines %}
+<section id="content" class="col-md-10">
+
+{% for cat in category_list %}
+
+    <article id="{{cat.grouper}}">
+    <h2>{{cat.grouper}}</h2>
+	
 		
+		<p>{% for line in cat.list %}
+        <section id="{{line}}"><h3><a href="details/{{ line.id }}" class="media-heading">{{line}}</a></h3>
 		<div class="media">
-  <a class="pull-left" href="details/{{ line.id }}">
+  <a class="pull-left" href="details/{{ item.id }}">
     <img class="media-object" src="{% thumbnail line.image 100x100 crop %}" alt="">
   </a>
   <div class="media-body">
-    <a href="details/{{ line.id }}" class="media-heading">{{line}}</a>
+
     </p>
-                            {% for author in line.author.all %}
-                                {{author}}<br />
-                            {% endfor %}
+                            <h4>{% for author in line.author.all %}
+                                {{author.firstName}} {{author.lastName}}<br />
+                            {% endfor %}</h4>
 							
 							{{line.description|truncatechars:200}}
   </div>
 </div>
-             
+		
+		</p></section>. 
+		    {% endfor %}
+    </article>
+	
+    <br />
+	{% endfor %} 
+</section> 
+    
 
-        {% endfor %}
-    <hr>
 
-    {% bootstrap_pagination lines url="/pagination?page=1&flop=flip" extra="q=foo" size="small" %}
-</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+</div><!-- end of row -->
+</div><!-- end of container -->
 {% endblock %}
