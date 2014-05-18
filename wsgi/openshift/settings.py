@@ -185,7 +185,7 @@ else:
 MEDIA_URL = "/media/"    
 if 'OPENSHIFT_DATA_DIR' in os.environ:
     #MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')
-	MEDIA_ROOT = os.environ.get(‘OPENSHIFT_REPO_DIR’, ”)+’/wsgi/static/media’
+	MEDIA_ROOT = os.environ.get('OPENSHIFT_REPO_DIR')+'/wsgi/static/media'
 else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
