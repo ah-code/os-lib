@@ -86,7 +86,10 @@ HAYSTACK_CONNECTIONS = {
 }
 
 #fixes the site_id error with not registered sites
-SITE_ID=1
+if ON_OPENSHIFT:
+	SITE_ID=2
+else:
+	SITE_ID=1
 
 #django registration period
 ACCOUNT_ACTIVATION_DAYS = 7
