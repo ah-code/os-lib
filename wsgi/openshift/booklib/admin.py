@@ -16,7 +16,16 @@ class CategoryAdmin(MPTTModelAdmin, SortableModelAdmin):
 	list_display_links = ('name',)
 	sortable = 'order'
 
+class AuthorAdmin(admin.ModelAdmin):
+	search_fields = ('firstName', 'lastName')
+	list_display = ('firstName', 'lastName')
+	list_display_links = ('firstName', 'lastName')
+	
+class BookAdmin(admin.ModelAdmin):
+	search_fields = ('title', 'description')
+	list_display = ('title', 'category')
 
-admin.site.register(Author)
-admin.site.register(Book)
+
+admin.site.register(Author, AuthorAdmin)
+admin.site.register(Book, BookAdmin)
 admin.site.register(Category, CategoryAdmin)
