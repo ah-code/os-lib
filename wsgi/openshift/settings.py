@@ -155,7 +155,7 @@ else:
             'USER': 'admintM4RKd7',                      # Not used with sqlite3.
             'PASSWORD': 'j2gR9-Fd1neW',                  # Not used with sqlite3.
             'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
+            'PORT': '3307',                      # Set to empty string for default. Not used with sqlite3.
         }
 }
 
