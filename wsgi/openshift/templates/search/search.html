@@ -35,7 +35,7 @@
                     <td>
 
                         <a href="/details/{{ result.object.id }}">
-                            <h4>{% highlight result.object.title with query %}</h4>
+                            <h4>{{result.object.title}}</h4>
                         </a>
 
                         {% for author in result.object.author.all %}
@@ -43,7 +43,7 @@
                         {% endfor %}
 
                         <br/> <br/>
-                           {{result.object.description|truncatechars:300}}
+                           {% highlight result.object.description with query%}
 
                         <br /> <br/>
                             Category: {{result.object.category.name}}
