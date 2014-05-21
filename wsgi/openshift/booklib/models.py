@@ -7,9 +7,10 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 from django.core.urlresolvers import reverse
 from mptt.managers import TreeManager
-#from django.core.file.storage import FileSystemStorage
+# signals for deleting files / images
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
-#fs = FileSystemStorage(location='/media/bookcover')
 
 class CategoryManager(TreeManager):
     pass
@@ -54,9 +55,9 @@ class Book(models.Model):
     def	__unicode__(self):
         return self.title
 #### NOT WORKING (why not????)	
-	def get_absolute_url(self):
+	#def get_absolute_url(self):
 		#return reverse('book-details', self.id)
-		return('details/'+ self.id)
+		#return('details/'+ self.id)
 
 class Lending(models.Model):
 	user = models.ForeignKey(User)
@@ -67,3 +68,10 @@ class Favorite(models.Model):
     user = models.ForeignKey(User)
     book = models.ForeignKey(Book)
     endDate = models.DateField()
+
+#make sure that files and images are deleted if book is deleted	
+@receiver(pre_delete, sender = Book)
+def book_delete(sender, instance, **kwargs):
+	#false so that the model is not saved again!
+	instance.file.delete(false)
+	instance.image.delete(false)

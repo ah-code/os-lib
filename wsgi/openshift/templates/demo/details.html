@@ -16,16 +16,17 @@
    <p>
         <a href="{% url 'haystack_search' %}">« back to search</a>
    </p>
-   <table class="table">
-        <tr>
-             <td>
+
+			<div class="col-xs-12 col-sm-6 col-md-4">
                   <img src="{% thumbnail book.image 300x300 crop %}" alt=""  />
-             </td>
-             <td>
+				  
+				  </div>
+  
+			 <div class="col-xs-12 col-sm-6 col-md-8">
                   <h1>{{ book.title }}</h1>
                   <h2>
                        {% for author in book.author.all %}
-                            {{author}}<br />
+                            {{author.firstName}} {{author.lastName}}<br />
                        {% endfor %}
                   </h2>
                   <p>
@@ -35,11 +36,10 @@
                   <p align="right">
                        Category: {{ book.category }}
                   </p>
-
-             </td>
-        </tr>
-        <tr>
-            <td>
+				</div>
+         
+			<div class="clearfix"></div>
+			<div class="col-xs-12 col-sm-6">
                 {% if favorite < 1 %}
                      <a class="btn btn-default btn-sm" data-toggle="tooltip" title="Mark as favorite"
                     href="/favorites/{{ book.id }}"> <span class="glyphicon glyphicon-star-empty"></span></a>
@@ -55,9 +55,8 @@
                 href="{% url 'book-pdf' book.id %}" target="_blank" data-toggle="tooltip" title="Download PDF"> <span class="glyphicon glyphicon-download-alt"></span></a>
 				{% endif %}
 				<span class="badge">{{lendings}} books left this month! </span>
-            </td>
-        </tr>
-    </table>
+            </div>
+
 
 </div>
 {% endblock %}
