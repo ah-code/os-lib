@@ -18,7 +18,8 @@
    </p>
 
 			<div class="col-xs-12 col-sm-6 col-md-4">
-                  <img src="{% thumbnail book.image 300x300 crop %}" alt=""  />
+                  <!-- <img src="{% thumbnail book.image 300x300 crop %}" alt=""  /> !-->
+				  <img src="{{book.image.url}}" class="img-responsive" alt"cover" />
 				  
 				  </div>
   
@@ -39,6 +40,8 @@
 				</div>
          
 			<div class="clearfix"></div>
+			<br/>
+			<br/>
 			<div class="col-xs-12 col-sm-6">
                 {% if favorite < 1 %}
                      <a class="btn btn-default btn-sm" data-toggle="tooltip" title="Mark as favorite"
