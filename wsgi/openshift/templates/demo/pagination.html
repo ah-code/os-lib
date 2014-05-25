@@ -44,7 +44,7 @@
 		<p>{% for line in cat.list %}
         <section id="{{line}}"><h3><a href="details/{{ line.id }}" class="media-heading">{{line}}</a></h3>
 		<div class="media">
-  <a class="pull-left" href="details/{{ item.id }}">
+  <a class="pull-left" href="details/{{ line.id }}">
     <img class="media-object" src="{% thumbnail line.image 100x100 crop %}" alt="">
   </a>
   <div class="media-body">
