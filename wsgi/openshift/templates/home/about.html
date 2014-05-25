@@ -1,9 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-test
-</body>
-</html>
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load url from future %}
+{% load bootstrap3 %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>About</h1>
+
+</div>
+{% endblock %}
