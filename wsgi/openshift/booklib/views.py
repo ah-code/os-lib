@@ -21,6 +21,8 @@ def home(request):
 	return render(request, 'home/home.html')
     return login(request, template_name='home/home.html')
 
+def about(request):
+    return render(request, 'home/about.html')
 
 @login_required
 def profile(request):

@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	url(r'^profile/$', 'booklib.views.profile', name='profile'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
+    url(r'^about', 'booklib.views.about', name = 'about'),
 	url(r'^browse$', PaginationView.as_view(), name='pagination'),
 #	(r'^search/', include('haystack.urls')),
 	
