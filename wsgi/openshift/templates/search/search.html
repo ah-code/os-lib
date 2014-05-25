@@ -22,47 +22,34 @@
        
         {% if query %}
             <h3>Results</h3>
-			
-			<table class="table">
-        {% for result in page.object_list %}
-  
-                <tr>
-                    <td>
+
+            {% for result in page.object_list %}
+                <section id="{{result}}">
+                    <h3>
                         <a href="/details/{{ result.object.id }}">
+                            {{result.object.title}}
+                        </a>
+                    </h3>
+
+                    <div class="media">
+                        <a class="pull-left" href="/details/{{ result.object.id }}">
                             <img src="{% thumbnail result.object.image 100x100 crop %}" alt="" />
                         </a>
-                    </td>
-                    <td>
+                        <div class="media-body">
+                        </p>
+                            <h4>
+                                {% for author in result.object.author.all %}
+                                    {{author.firstName}} {{author.lastName}}<br />
+                                {% endfor %}
+                            </h4>
+                            {% highlight result.object.description with query%}
 
-                        <a href="/details/{{ result.object.id }}">
-                            <h4>{{result.object.title}}</h4>
-                        </a>
-
-                        {% for author in result.object.author.all %}
-                            {{author}}
-                        {% endfor %}
-
-                        <br/> <br/>
-                           {% highlight result.object.description with query%}
-
-                        <br /> <br/>
-                            Category: {{result.object.category.name}}
-
-                    </td>
-                </tr>
-				
-				{% empty %}
-				<tr>
-
-				<td>
-                <p>No results found.</p>
-				</td>
-				</tr>
+                            <!-- {{line.description|truncatechars:200}} -->
+                        </div>
+                    </div>
+                    <br/>
+                </section>
             {% endfor %}
-
-    </table>
-
-           
 
 
             {% if page.has_previous or page.has_next %}
