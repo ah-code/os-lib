@@ -10,6 +10,7 @@ class BookIndex(indexes.SearchIndex, indexes.Indexable):
 	title = indexes.CharField(model_attr='title')
 	category = indexes.CharField(model_attr='category')
 	author = indexes.CharField(model_attr='author', null=True)
+    content_auto = indexes.EdgeNgramField(model_attr='content')
     
 	def get_model(self):
 		return Book

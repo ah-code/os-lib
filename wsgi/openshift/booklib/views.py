@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from haystack.query import SearchQuerySet
 import datetime
 
 
@@ -95,6 +96,17 @@ def details(request, id):
 	
 		return render_to_response('demo/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
 	return login(request, template_name='registration/login.html')
+
+
+#Autocompletion
+def autocomplete(request):
+    sqs = SearchQuerySet().autocomplete(content_auto=request.GET.get('q', ''))[:5]
+    suggestions = [result.title for result in sqs]
+    the_data = json.dumps({
+                          'results': suggestions
+                          })
+    return HttpResponse(the_data, content_type='application/json')
+
 
 class PaginationView(TemplateView):
     template_name = 'demo/pagination.html'
