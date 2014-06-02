@@ -105,7 +105,7 @@ def autocomplete(request):
     the_data = json.dumps({
                           'results': suggestions
                           })
-    return HttpResponse(the_data, content_type='application/json')
+    return HttpResponse(the_data, content_type='booklib/json')
 
 
 class PaginationView(TemplateView):
