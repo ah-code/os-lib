@@ -11,10 +11,10 @@ from mptt.managers import TreeManager
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
 
-
 class CategoryManager(TreeManager):
     pass
 
+#inhertis from MPTT is the class model
 class Category(MPTTModel):
     name = models.CharField(max_length=64)
     slug = models.CharField(max_length=64)
@@ -48,6 +48,7 @@ class Book(models.Model):
     author = models.ManyToManyField(Author)
     category = TreeForeignKey(Category)
     description = models.TextField()
+    #ImageField has an own directory in media
     image = models.ImageField(upload_to='cover')
     #file
     file = models.FileField(upload_to='file')

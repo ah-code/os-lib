@@ -3,7 +3,8 @@ from haystack import indexes
 from .models import Book
 from .models import Author
 
-
+#determines the index of search fields
+#is used in templates-search-indexes-booklib-book_text.txt
 class BookIndex(indexes.SearchIndex, indexes.Indexable):
 	text = indexes.CharField(document=True, use_template=True)
 	description = indexes.CharField(model_attr='description')
@@ -13,8 +14,7 @@ class BookIndex(indexes.SearchIndex, indexes.Indexable):
     
 	def get_model(self):
 		return Book
-		
-		
+
 	def prepare_authors(self, obj):
 		return [author for author in obj.author.all()]
 		

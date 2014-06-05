@@ -8,17 +8,13 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 import datetime
-
-
-# Create your views here.
-
 from django.contrib.auth.views import login
 from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     if (request.user.is_authenticated()):
-	return render(request, 'home/home.html')
+        return render(request, 'home/home.html')
     return login(request, template_name='home/home.html')
 
 def about(request):
@@ -26,15 +22,14 @@ def about(request):
 
 @login_required
 def profile(request):
-
-    #@ Todo: Liste der Favoriten ausgeben, eventuell zu Buchseiten verlinken
     favs = Favorite.objects.filter(user_id=request.user.id)
+    #second page is created if number of favorites is >5
     paginator = Paginator(favs, 5)
-
-
+    #selection is committed e.g. page 2
     page = request.GET.get('page')
 
     try:
+        #display favorites of selected page e.g. favorites from page 2
 		favs = paginator.page(page)
     except PageNotAnInteger:
      # If page is not an integer, deliver first page.
