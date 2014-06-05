@@ -12,6 +12,7 @@
     <form method="get"  action="." class="form-inline">
 	
 		<input class="form-control input-large input-mg" id="id_q" name="q" type="text" placeholder="Search...">
+        <!-- if the screen is mobile -> make a break so the button is not next to the input field -->
         <div class="clearfix visible-xs">
             </br>
         </div>
@@ -23,6 +24,10 @@
        
         {% if query %}
             <h3>Results</h3>
+
+            {% if page.object_list|length = 0 %}
+                <p>No results found!</p>
+            {% endif %}
 
             {% for result in page.object_list %}
                 <section id="{{result}}">
@@ -43,16 +48,18 @@
                                     {{author.firstName}} {{author.lastName}}<br />
                                 {% endfor %}
                             </h4>
+                            <!-- if keyword was found in text -> highlight it -->
                             {% highlight result.object.description with query%}
 
-                            <!-- {{line.description|truncatechars:200}} -->
+
+
                         </div>
                     </div>
                     <br/>
                 </section>
             {% endfor %}
 
-
+            <!-- Pagination -->
             {% if page.has_previous or page.has_next %}
                 <div>
                     {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
@@ -60,8 +67,9 @@
                     {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
                 </div>
             {% endif %}
+
         {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
+
         {% endif %}
     </form>
 	
