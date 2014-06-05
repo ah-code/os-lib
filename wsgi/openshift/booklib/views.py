@@ -95,11 +95,11 @@ def details(request, id):
 		fav = Favorite.objects.filter(user = request.user, book = book)
 		f = fav.count()
 	
-		return render_to_response('demo/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
+		return render_to_response('main/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
 	return login(request, template_name='registration/login.html')
 
 class PaginationView(TemplateView):
-    template_name = 'demo/pagination.html'
+    template_name = 'main/pagination.html'
 
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)
