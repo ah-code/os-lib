@@ -1,130 +1,116 @@
-Django 1.6 on OpenShift
+Online Library
 =======================
+This website represents an online library with a backend and a frontend.
+The page is responsive, which means it can be viewed on mobile devices.
 
-This git repository helps you get up and running quickly w/ a Django 1.6
-installation on OpenShift.  The Django project name used in this repo
-is 'openshift' but you can feel free to change it.  Right now the
-backend is sqlite3 and the database runtime is found in
-`$OPENSHIFT_DATA_DIR/db.sqlite3`.
-
-Before you push this app for the first time, you will need to change
-the [Django admin password](#admin-user-name-and-password).
-Then, when you first push this
-application to the cloud instance, the sqlite database is copied from
-`wsgi/openshift/db.sqlite3` to $OPENSHIFT_DATA_DIR/ with your newly 
-changed login credentials. Other than the password change, this is the 
-stock database that is created when `python manage.py syncdb` is run with
-only the admin app installed.
-
-On subsequent pushes, a `python manage.py syncdb` is executed to make
-sure that any models you added are created in the DB.  If you do
-anything that requires an alter table, you could add the alter
-statements in `GIT_ROOT/.openshift/action_hooks/alter.sql` and then use
-`GIT_ROOT/.openshift/action_hooks/deploy` to execute that script (make
-sure to back up your database w/ `rhc app snapshot save` first :) )
-
-With this you can install Django 1.6 on OpenShift.
-
-Running on OpenShift
+Backend
 --------------------
+In the backend (.../admin) the admin user can search for items which are grouped into categories. 
 
-Create an account at http://openshift.redhat.com/
+**Category: Auth**
 
-Install the RHC client tools if you have not already done so:
-    
-    sudo gem install rhc
+The admin user can search for groups and users. 
+Groups and users can be added or deleted. 
+The user's details can be edited and assigned to groups.
+A user can be deactivated as well.
 
-Create a python-2.7 application
+**Category: Booklib**
 
-    rhc app create -a djangoproj -t python-2.7
+The admin user can search for Authors, Books and Categories.
+Authors can be added, edited and deleted.
+Books can be added, edited, deleted, Authors can be assigned and the image as well as the file can be uploaded.
+Categories can be added, edited, deleted and deactivated.
+The order of categories can be defined.
+Categories can have a parent category.
 
-Add this upstream repo
+**Category:Registration**
 
-    cd djangoproj
-    git remote add upstream -m master git://github.com/rancavil/django-openshift-quickstart.git
-    git pull -s recursive -X theirs upstream master
+The user ID and the Activation Key of the currently registered users can be found in 'Registration Profiles'.
+Registrations can be added, deleted, activated and the activation email can be resent again.
 
-####Note:
-If you want to use the Redis-Cloud with Django see [the wiki](https://github.com/rancavil/django-openshift-quickstart/wiki/Django-1.6-with-Redis-Cloud) 
+**Category: Sites**
 
-Then push the repo upstream
+Under Sites the links are stated which provide access to the website.
+It is used to provide the right link in the registration process.
+Those links can be added, edited and deleted. 
 
-    git push
+The admin user can change his password in the backend and he can logout as well.
 
-Here, the [admin user name and password will be displayed](#admin-user-name-and-password), so pay
-special attention.
+
+Frontend
+--------------------
+In the frontend a user can either register or login on the home page.
+A user who is not logged in can search and browse for books, but cannot access the details page. 
+
+**Menu point: Search**
+
+The user can search for book titles, authors, categories and text passages in the description of the book. 
+By clicking on the title or the book image, the user is navigated to the details view of the book.
+
+**Menu point: Browse**
+
+In the browse view, all books are listed grouped by their category.
+On the left hand menu, the categories are listed. 
+In brackets, the number of books in the corresponding category is displayed.
+By clicking on the title or the book image, the user is navigated to the details view of the book.
+
+**Details view**
+
+In the details view, the cover image, title, authors, description and the category are displayed.
+A book can be added to the favorites (or removed if it is already a favorite).
+The book can be downloaded as PDF file.
+A user has 10 free downloads per month (the number of downloads left is displayed next to the download button).
 	
-That's it. You can now checkout your application at:
+**Menu point: Profile (user name)**
 
-    http://djangoproj-$yournamespace.rhcloud.com
+In the profile, the user can take a look at his favorites. 
+By clicking on the title, the user is navigated to the details view of the book.
+A favorite can also be deleted in the profile.
+In the settings tab of the profile, the user can change his password.
 
-Admin user name and password
-----------------------------
-As the `git push` output scrolls by, keep an eye out for a
-line of output that starts with `Django application credentials: `. This line
-contains the generated admin password that you will need to begin
-administering your Django app. This is the only time the password
-will be displayed, so be sure to save it somewhere. You might want 
-to pipe the output of the git push to a text file so you can grep for
-the password later.
+Technical Directions
+---------------------
+**Openshift**
 
-When you make:
+Openshift offers hosting possibilities for various applications for free. It is possible to log in via ssh, and use port-forwarding for the database.
 
-     git push
+In order to use Openshift, an account is necessary. Afterwards, the rhc-app has to be installed:
+https://www.openshift.com/developers/rhc-client-tools-install
 
-In the console output, you must find something like this:
+With that, port-forwarding can be used:
 
-     remote: Django application credentials:
-     remote: 	user: admin
-     remote: 	SY1ScjQGb2qb
+	rhc port-forward –a python
 
-Or you can go to SSH console, and check the CREDENTIALS file located 
-in $OPENSHIFT_DATA_DIR.
+The ssh-link is visible on the Openshift page within the application.
 
-     cd $OPENSHIFT_DATA_DIR
-     vi CREDENTIALS
+In the setup.py file, all the installed apps are listed. They are used on the Openshift server, but this file is also useful for local development.
 
-You should see the output:
 
-     Django application credentials:
-     		 user: admin
-     		 SY1ScjQGb2qb
+**Database**
 
-After, you can change the password in the Django admin console.
+A MySQL database hosted on Openshift is used. Port-forwarding has to be enabled for local development.
 
-Django project directory structure
-----------------------------------
+phpMyAdmin is also installed on Openshift, in case a look into the database is desired.
 
-     djangoproj/
-        .gitignore
-     	.openshift/
-     		README.md
-     		action_hooks/  (Scripts for deploy the application)
-     			build
-     			post_deploy
-     			pre_build
-     			deploy
-     			secure_db.py
-     		cron/
-     		markers/
-     	setup.py   (Setup file with de dependencies and required libs)
-     	README.md
-     	libs/   (Adicional libraries)
-     	data/	(For not-externally exposed wsgi code)
-     	wsgi/	(Externally exposed wsgi goes)
-     		application (Script to execute the application on wsgi)
-     		openshift/	(Django project directory)
-     			__init__.py
-     			manage.py
-     			openshiftlibs.py
-     			settings.py
-     			urls.py
-     			views.py
-     			wsgi.py
-     			templates/
-     				home/
-     					home.html (Default home page, change it)
-     		static/	(Public static content gets served here)
-     			README
+In the settings.py the port is specified and may have to be adjusted depending on the port-forwarding.
 
-From HERE you can start with your own application.
+**Search**
+
+The search relies on Whoosh (a python search engine) and haystack as a middle layer. In order for the search index to rebuild, the following command has to be used in order to add new books:
+
+	manage.py update_index
+
+
+**E-Mails**
+A gmail-account is used to send e-mails instead of an own smtp-server. The data is specified in the settings.py file.
+
+
+**Setup.py**
+Here, additional apps have to added in order to work on Openshift when pushing it on the server.
+
+
+
+
+
+
+
