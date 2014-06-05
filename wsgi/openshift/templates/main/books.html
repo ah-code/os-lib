@@ -1,9 +1,0 @@
-{% load bootstrap_pagination %}
-{% for book in books %}
-    {# Each "contact" is a Contact model object. #}
-    {{ book.title }}<br />
-	{{ book.description }}<br />
-    ...
-{% endfor %}
-
- {% bootstrap_paginate books range=10 show_prev_next="false" show_first_last="true" %}

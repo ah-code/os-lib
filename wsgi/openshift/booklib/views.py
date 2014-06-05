@@ -32,17 +32,13 @@ def profile(request):
         #display favorites of selected page e.g. favorites from page 2
 		favs = paginator.page(page)
     except PageNotAnInteger:
-     # If page is not an integer, deliver first page.
+        # If page is not an integer, deliver first page.
         favs = paginator.page(1)
     except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
+        # If page is out of range (e.g. 9999), deliver last page of results.
         favs = paginator.page(paginator.num_pages)
 
-    #return render(request,{'favorites':favs}, template_name='home/profile.html')
     return render_to_response('home/profile.html', {"favorites": favs}, context_instance=RequestContext(request))
-
-
-						  
 
 @login_required
 def favorites(request, id):
@@ -50,10 +46,12 @@ def favorites(request, id):
     user = request.user
 
     try:
+        #if this book is already a favorite -> delete the favorite
         fav = Favorite.objects.get(book = book, user = user)
         fav.delete()
         message = "deleted"
     except Favorite.DoesNotExist:
+        #add book to favorites (inc. user and date)
         fav = Favorite()
         fav.book = book
         fav.user = user
@@ -61,41 +59,38 @@ def favorites(request, id):
         fav.save()
         message = "created"
 
-
-    #@ TODO: Favorite Object mit book und user machen, Uhrzeit hinterlegen, speichern
     return render_to_response('home/favorites.html', {"book":book, 'message':message}, context_instance=RequestContext(request))
-@login_required	
+
+@login_required
 def pdf_view(request, id):
-	if (request.user.is_authenticated()):
-		book =  get_object_or_404(Book, pk=id)
-		pdf = book.file
-		
-		today = datetime.date.today()
-		lend = Lending (user = request.user, book = book, endDate = today)
-		lend.save()
-		response = HttpResponse(pdf.read(), mimetype='application/pdf')
-		response['Content-Disposition'] = 'inline;filename=some_file.pdf'
-		return response
-		pdf.closed
-	return login(request, template_name='registration/login.html')
-	
+    #pass the book-id to get the pdf file and save the current date
+    book =  get_object_or_404(Book, pk=id)
+    pdf = book.file
+    today = datetime.date.today()
+    lend = Lending (user = request.user, book = book, endDate = today)
+    lend.save()
+    response = HttpResponse(pdf.read(), mimetype='application/pdf')
+    response['Content-Disposition'] = 'inline;filename=some_file.pdf'
+    return response
+    pdf.closed
+
 @login_required
 def details(request, id):
-	if (request.user.is_authenticated()):
 		book =  get_object_or_404(Book, pk=id)
 		today = datetime.date.today()
 		lending = Lending.objects.filter(user = request.user, endDate__month = today.month)
+        #count how many books have been downloaded
 		c = lending.count()
 		c = 10-c
 		fav = Favorite.objects.filter(user = request.user, book = book)
 		f = fav.count()
-	
 		return render_to_response('main/details.html', {"book":book, "lendings": c, "favorite":f}, context_instance=RequestContext(request))
-	return login(request, template_name='registration/login.html')
 
+#alternative (more modern) way to do view classes
 class PaginationView(TemplateView):
-    template_name = 'main/pagination.html'
+    template_name = 'main/browsing.html'
 
+    #group books by category to display the category menu in the browse page
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)
         context['lines'] = Book.objects.all().order_by('category')

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 {% block title %}Library{% endblock %}
+
 {% block nav_user %}
+  <!-- navigation header -->
+  <!-- if user is logged in, display username and logout -->
   {% if user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
       <li id="nav-username"><a href="{% url 'profile' %}">
@@ -11,7 +14,8 @@
         <a href="{% url 'django.contrib.auth.views.logout' %}"> <span class="glyphicon glyphicon-off"></span> Sign out</a>
       </li>
     </ul>
-	
+
+  <!-- if user is not logged in, display input fields for username and password and "sign in" button -->
   {% else %}
     <form class="navbar-form navbar-right" 
           method="post" 
@@ -24,11 +28,14 @@
     </form>
   {% endif %}
 {% endblock %}
+
+
 {% block content %}
 	<div class="container">
       <div class="jumbotron">
 		<div class="container">
-         <!-- <h1>Online Library</h1> -->
+
+          <!-- if user is not logged in, display buttons for login and registration -->
 		  {% if not user.is_authenticated %}
             <p><a class="btn btn-lg btn-primary" 
 				  href="{% url 'registration_register' %}">Register</a> 
@@ -37,14 +44,11 @@
 				  href="{% url 'django.contrib.auth.views.login' %}">Sign in</a>
             </p>
 		  {% else %}
-		<!--   {% block search %}
-		    <a class="btn btn-lg btn-success"
-				href="search/">To preliminary search</a>
-		  {% endblock %}  -->
-		 	  {% endif %}
+	 	  {% endif %}
 
 
             <br />
+            <!-- slide show -->
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">

@@ -10,18 +10,18 @@
       {{ user.get_username }}'s favorites</a></h2>
     <br/>
     <h3>
-        <a href="/details/{{ book.id }}">{{ book.title }}</a></h3>
-   <br/>
-
-
-<br />
+        <a href="/details/{{ book.id }}">
+            {{ book.title }}
+        </a>
+    </h3>
+    <br/>
+    <br />
     {% if message == "created" %}
-
     <div class="alert alert-success">You successfully created a favorite!</div>
 
-        {% elif message == "deleted" %}
-            <div class="alert alert-danger">You successfully deleted a favorite!</div>
+    {% elif message == "deleted" %}
+    <div class="alert alert-danger">You successfully deleted a favorite!</div>
     {% endif %}
-<!-- {{ message }} -->
+
 </div>
 {% endblock %}
