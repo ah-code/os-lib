@@ -8,25 +8,19 @@ admin.autodiscover()
 from django.conf import settings
 from booklib.views import PaginationView
 from booklib import views
-
-urlpatterns = patterns('',
-    # Examples:
-    url(r'^$', 'booklib.views.home', name='home'),
-	url(r'^profile/$', 'booklib.views.profile', name='profile'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^about', 'booklib.views.about', name = 'about'),
-	url(r'^browse$', PaginationView.as_view(), name='pagination'),
-#	(r'^search/', include('haystack.urls')),
-	
-)
-
-
-
 import haystack
 from haystack.forms import SearchForm
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView
+
+
+urlpatterns = patterns('',
+    url(r'^$', 'booklib.views.home', name='home'),
+	url(r'^profile/$', 'booklib.views.profile', name='profile'),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^about', 'booklib.views.about', name = 'about'),
+	url(r'^browse$', PaginationView.as_view(), name='pagination'),
+)
 
 urlpatterns += patterns('haystack.views',
     url(r'search/', SearchView(
@@ -44,10 +38,6 @@ urlpatterns += patterns('',
     }),
 )
 
-urlpatterns += patterns('',
-#    url(r'', include('social_auth.urls')),
-#	(r'^accounts/', include('registration.backends.default.urls')),
-)
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin

@@ -54,10 +54,6 @@ class Book(models.Model):
 
     def	__unicode__(self):
         return self.title
-#### NOT WORKING (why not????)	
-	#def get_absolute_url(self):
-		#return reverse('book-details', self.id)
-		#return('details/'+ self.id)
 
 class Lending(models.Model):
 	user = models.ForeignKey(User)

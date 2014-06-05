@@ -103,28 +103,6 @@ class PaginationView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PaginationView, self).get_context_data(**kwargs)
-		
-	#category_filter = self.request.GET.get('category_filter')
-        #try:
-        #    book_list = Book.objects.filter(category=category_filter)
-	#except:
-	#    book_list = Book.objects.all()
-
-        #book_list = Book.objects.all()
-        #paginator = Paginator(book_list, 5)
-        #page = self.request.GET.get('page')
-
-		
-        #try:
-	#		show_lines = paginator.page(page)
-        #except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-        #    show_lines = paginator.page(1)
-        #except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-        #    show_lines = paginator.page(paginator.num_pages)
-        #context['lines'] = show_lines
-	#context['nodes'] = Category.objects.all()
         context['lines'] = Book.objects.all().order_by('category')
         return context
 

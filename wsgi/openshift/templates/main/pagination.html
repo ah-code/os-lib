@@ -1,72 +1,72 @@
 {% extends 'base.html' %}
-				{% load thumbnail %}
+{% load thumbnail %}
 {% load bootstrap3 %}
-
-
 {% block title %}
     Browse
 {% endblock %}
-
 {% block content %}
 
-
-<div class="container data-spy="scroll" data-target=".affix-nav">
-    <h1>Browse</h1>
+<div class="container data-spy=" scroll" data-target=".affix-nav">
+    <h1>
+        Browse
+    </h1>
 	</br>
 <div class="row">
+
 <div id="affix-nav" class="sidebar col-md-2 hidden-xs hidden-sm">
-
-{% regroup lines by category as category_list %}
-
+    {% regroup lines by category as category_list %}
     <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="15" data-offset-botton="30">
-	{% for cat in category_list %}
-	
-        <li><a href="#{{cat.grouper}}">{{cat.grouper}} <span class="badge">{{cat.list|length}}</span></a>
-<!--        <ul class="nav">
-		 {% for item in cat.list %}
-        <li><a href="#{{item}}">{{item}}</a></li>
-		{% endfor %}
-        </ul>
-				!-->
+	    {% for cat in category_list %}
+        <li>
+            <a href="#{{cat.grouper}}">
+                {{cat.grouper}}
+                <span class="badge">
+                    {{cat.list|length}}
+                </span>
+            </a>
         </li>
 	{% endfor %}
     </ul>
 </div>
 
 <section id="content" class="col-md-10">
-
 {% for cat in category_list %}
-
     <article id="{{cat.grouper}}">
-    <h2>{{cat.grouper}}</h2>
-	
+        <h2>
+            {{cat.grouper}}
+        </h2>
 		
-		<p>{% for line in cat.list %}
-        <section id="{{line}}"><h3><a href="details/{{ line.id }}" class="media-heading">{{line}}</a></h3>
-        <div class="media">
-              <a class="pull-left" href="details/{{ line.id }}">
-                <img class="media-object" src="{% thumbnail line.image 100x100 crop %}" alt="">
-              </a>
-        <div class="media-body">
-
-    </p>
-                            <h4>{% for author in line.author.all %}
-                                {{author.firstName}} {{author.lastName}}<br />
-                            {% endfor %}</h4>
-							
-							{{line.description|truncatechars:200}}
-  </div>
-</div>
-		
-		</p></section>. 
-		    {% endfor %}
+		</p>
+        {% for line in cat.list %}
+        <section id="{{line}}">
+            <h3>
+                <a href="details/{{ line.id }}" class="media-heading">
+                    {{line}}
+                </a>
+            </h3>
+            <div class="media">
+                <a class="pull-left" href="details/{{ line.id }}">
+                  <img class="media-object" src="{% thumbnail line.image 100x100 crop %}" alt="">
+                </a>
+                <div class="media-body">
+                </p>
+                    <h4>
+                        {% for author in line.author.all %}
+                            {{author.firstName}}
+                            {{author.lastName}}
+                            <br />
+                        {% endfor %}
+                    </h4>
+                    {{line.description|truncatechars:200}}
+                </div>
+            </div>
+            </p>
+        </section>.
+        {% endfor %}
     </article>
-	
     <br />
 	{% endfor %} 
 </section> 
-    
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

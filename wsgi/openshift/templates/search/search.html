@@ -12,13 +12,14 @@
     <form method="get"  action="." class="form-inline">
 	
 		<input class="form-control input-large input-mg" id="id_q" name="q" type="text" placeholder="Search...">
-<div class="clearfix visible-xs"></br></div>
-    {% buttons %}
-      <button type="submit" value="Search" class="btn btn-primary btn-mg">
-        {% bootstrap_icon "search" %} Search!
-      </button>
-
-    {% endbuttons %}
+        <div class="clearfix visible-xs">
+            </br>
+        </div>
+        {% buttons %}
+            <button type="submit" value="Search" class="btn btn-primary btn-mg">
+                {% bootstrap_icon "search" %} Search!
+            </button>
+        {% endbuttons %}
        
         {% if query %}
             <h3>Results</h3>
