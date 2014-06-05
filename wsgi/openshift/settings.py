@@ -31,7 +31,6 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'ascq#%bii8(tld52#(^*ht@pzq%=nyb7fdv+@ok$u^iwb@2hwh'
-
 default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(u69hi--%$5xrh!xk(t%hw' }
 use_keys = default_keys
 if ON_OPENSHIFT:
@@ -41,18 +40,18 @@ if ON_OPENSHIFT:
 
 SECRET_KEY = use_keys['SECRET_KEY']
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 if ON_OPENSHIFT:
      DEBUG = False
 else:
      DEBUG = True
-
 TEMPLATE_DEBUG = DEBUG
-
 if DEBUG:
      ALLOWED_HOSTS = ['*']
 else:
      ALLOWED_HOSTS = ['*',]
+
 
 # Application definitions
 INSTALLED_APPS = (
@@ -67,14 +66,11 @@ INSTALLED_APPS = (
     'mptt',
     'booklib',
     'easy_thumbnails',
-#    'social_auth',
     'django.contrib.sites',
 	'registration',
 	'haystack',
 	'whoosh',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 )
 
 #search backend
@@ -84,6 +80,8 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+#rebuild index when book is added/changed
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 #fixes the site_id error with not registered sites
 if ON_OPENSHIFT:
@@ -91,21 +89,18 @@ if ON_OPENSHIFT:
 else:
 	SITE_ID=1
 
+
 #django registration period
 ACCOUNT_ACTIVATION_DAYS = 7
-
-
-
-GOOGLE_OAUTH2_CLIENT_ID      = '324497128720-7uv1qmfevh1hfv7lab7qnaphu61unef7.apps.googleusercontent.com'
-GOOGLE_OAUTH2_CLIENT_SECRET  = '94Za9a6cbcvwtpnepOQkPjr5'
-
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
 
 # If you want configure the REDISCLOUD
 if 'REDISCLOUD_URL' in os.environ and 'REDISCLOUD_PORT' in os.environ and 'REDISCLOUD_PASSWORD' in os.environ:
@@ -161,15 +156,10 @@ else:
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -187,7 +177,6 @@ else:
 # Media files (uploads)
 MEDIA_URL = "/media/"    
 if 'OPENSHIFT_DATA_DIR' in os.environ:
-    #MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')
 	MEDIA_ROOT = os.environ.get('OPENSHIFT_REPO_DIR')+'/wsgi/static/media'
 else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
@@ -195,7 +184,7 @@ else:
 ####dummy email-backend, used for debugging at the moment
 ###if DEBUG:
 #EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-#EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'mails') # change this to a proper location	
+#EMAIL_FILE_PATH = os.path.join(MEDIA_ROOT, 'mails') # change this to a proper location
 
 
 ###gmail as a smtp server to send registratation mails	
@@ -205,11 +194,11 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'python.onlinelib@gmail.com'
 EMAIL_HOST_PASSWORD = 'onlinelib...'
-	
-	
-	
-	
+
+
 #login-url
 LOGIN_URL          = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/logged-in/'
 LOGIN_ERROR_URL    = '/login-error/'
+
+
