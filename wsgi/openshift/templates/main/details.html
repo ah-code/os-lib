@@ -53,7 +53,7 @@
                 {% endif %}
 				
 				{% if lendings > 0 %}
-				<a class="btn btn-success btn-sm" onclick="window.location.reload().delay(10000)"
+				<a class="btn btn-success btn-sm" onclick="window.setTimeout(function(){window.location.reload();}, 5000)"
                 href="{% url 'book-pdf' book.id %}" target="_blank" data-toggle="tooltip" title="Download PDF"> <span class="glyphicon glyphicon-download-alt"></span></a>
 				{% endif %}
 				<span class="badge">{{lendings}} books left this month! </span>
